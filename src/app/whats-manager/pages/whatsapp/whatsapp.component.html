@@ -8,7 +8,7 @@
     <div class="w-full h-full flex items-center justify-center">
         <div class="dock w-full h-full md:max-w-[60dvw] box-border flex flex-col justify-between gap-4">
             <div class="flex flex-col gap-4 relative h-full overflow-hidden">
-                <div class="title">
+                <div class="neumprphicTitle px-[32px]">
                     <span>Lista de Conexões</span>
                 </div>
 
@@ -23,14 +23,24 @@
                                     <span class="name">{{ item.name }}</span>
                                 </div>
                             </div>
-                            <div class="neumorphicButton max-w-[180px]" [ngClass]="{'whatsapp': item.ativo}"
+                            <div class="neumorphicButton" [ngClass]="{'whatsapp': item.ativo}"
                                 (click)="connectContactID(item)">
                                 <ng-container *ngIf="item.ativo">
-                                    <span>Desconectar</span>
+                                    <ng-container *ngIf="!isMobile">
+                                        <span>Desconectar</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="isMobile">
+                                        <span class="icon" [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+                                    </ng-container>
                                 </ng-container>
 
                                 <ng-container *ngIf="!item.ativo">
-                                    <span>Conectar</span>
+                                    <ng-container *ngIf="!isMobile">
+                                        <span>Conectar</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="isMobile">
+                                        <span class="icon" [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+                                    </ng-container>
                                 </ng-container>
 
                             </div>
@@ -39,7 +49,7 @@
                 </div>
             </div>
             <div class="box-border px-[32px]">
-                <div class="neumorphicButton whatsapp">
+                <div class="neumorphicButton full whatsapp" (click)="addWhatsappDialog()">
                     <span>Adicionar Whatsapp</span>
                 </div>
             </div>

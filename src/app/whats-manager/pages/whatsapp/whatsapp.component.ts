@@ -1,17 +1,26 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'app-whatsapp',
     imports: [
         CommonModule,
-        MatRippleModule
+        MatRippleModule,
+        MatDialogModule
     ],
     templateUrl: './whatsapp.component.html',
     styleUrl: './whatsapp.component.scss'
 })
+
 export class WhatsappComponent implements OnInit {
+
+    public isMobile: boolean = false;
 
     public contactsList: any = [
         //crie uma lista de contatos com os seguintes campos: nome, localidade e ativo
@@ -163,10 +172,13 @@ export class WhatsappComponent implements OnInit {
 
     public filteredContacts: any = [];
 
-    constructor() { }
+    constructor(
+        public dialog: MatDialog,
+    ) { }
 
     ngOnInit(): void {
         this.filteredContacts = this.contactsList;
+        this.setViewWidth()
     }
 
 
@@ -178,4 +190,61 @@ export class WhatsappComponent implements OnInit {
             return item;
         });
     }
+
+    addWhatsappDialog(): void {
+        const dialogRef = this.dialog.open(addWhatsappComponent, {
+            panelClass: 'dialog-reset',
+            width: '400px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
+
+    setViewWidth() {
+        const width = window.innerWidth;
+        this.isMobile = false;
+        if (width <= 640) {
+            this.isMobile = true;
+        }
+    }
+
+
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event: any) {
+        this.setViewWidth()
+    }
+}
+
+@Component({
+    selector: 'add-whatsapp-dialog',
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule
+
+    ],
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: './add-whatsapp-dialog.component.html',
+    styleUrl: './whatsapp.component.scss'
+})
+
+export class addWhatsappComponent {
+
+    constructor(
+        public dialogRef: MatDialogRef<addWhatsappComponent>,
+    ) { }
+
+    close() {
+        this.dialogRef.close();
+    }
+
+    open() {
+        this.dialogRef.close();
+    }
+
 }
