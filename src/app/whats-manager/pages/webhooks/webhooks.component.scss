@@ -1,0 +1,271 @@
+.dock {
+    --main-curve: 16px;
+
+
+    background-color: #EDEDED;
+    padding: 32px 0px;
+    border-radius: 32px;
+    box-shadow: 41px 41px 82px #c9c9c9,
+        -41px -41px 82px #ffffff;
+    font-family: 'Nunito', sans-serif;
+
+    .title {
+        color: transparent;
+        text-shadow: 0px 2px 4px #fff, 0 0 0 #797979, 0px 2px 4px #fff;
+        font-weight: bold;
+        position: relative;
+        font-size: 1.4rem;
+        padding: 0px 32px;
+    }
+
+
+    .neumorphicButton {
+        width: 100%;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 40%;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+        font-size: 1.2rem;
+        font-weight: bold;
+        user-select: none;
+        cursor: pointer;
+
+        border-radius: var(--main-curve);
+        box-shadow: 10px 10px 10px #c9c9c9, -10px -10px 10px #ffffff;
+
+        &:active {
+            box-shadow: inset 10px 10px 10px #c9c9c9, inset -10px -10px 10px #ffffff;
+        }
+
+        &.whatsapp {
+
+            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
+            color: rgba(121, 121, 121, 0.5);
+            text-shadow: 0px 2px 4px #00E923, 0 0 0 #797979, 0px 2px 4px #00E923;
+
+
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #00E923;
+                mix-blend-mode: multiply;
+            }
+        }
+
+        &.webhooks {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
+            color: rgba(121, 121, 121, 0.5);
+            text-shadow: 0px 2px 4px #00AFE9, 0 0 0 #797979, 0px 2px 4px #00AFE9;
+
+
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #00AFE9;
+                mix-blend-mode: multiply;
+            }
+        }
+
+        &.disabled {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
+            color: rgba(121, 121, 121, 0.5);
+            text-shadow: 0px 2px 4px #00AFE9, 0 0 0 #797979, 0px 2px 4px #00AFE9;
+            position: relative;
+            user-select: none;
+            cursor: not-allowed;
+        }
+    }
+
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+    padding: 16px 16px 16px 32px;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+        width: 16px;
+
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: var(--main-curve) var(--main-curve);
+        background-color: transparent;
+        margin-top: var(--main-curve);
+        margin-bottom: var(--main-curve);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 32px;
+        background-color: #c9c9c9;
+        background-clip: padding-box;
+        border-left: 0px solid transparent;
+        border-right: 0px solid transparent;
+        border-top: 0px solid transparent;
+        border-bottom: 0px solid transparent;
+        min-height: 56px;
+    }
+
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 32px;
+        height: 32px;
+        aspect-ratio: 1/1;
+
+
+        &.signal {
+            background-image: url('/assets/icons/wifi-solid.svg');
+        }
+    }
+
+    .info {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .list-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.2rem;
+
+        &.active {
+            color: #009416;
+
+            &.signal {
+                background-color: #009416;
+            }
+        }
+    }
+
+}
+
+.webhooks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+    padding: 16px 16px 16px 32px;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+        width: 16px;
+
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: var(--main-curve) var(--main-curve);
+        background-color: transparent;
+        margin-top: var(--main-curve);
+        margin-bottom: var(--main-curve);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 32px;
+        background-color: #c9c9c9;
+        background-clip: padding-box;
+        border-left: 0px solid transparent;
+        border-right: 0px solid transparent;
+        border-top: 0px solid transparent;
+        border-bottom: 0px solid transparent;
+        min-height: 56px;
+    }
+
+    .list-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+
+            .content-title {
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+
+            .content-subtitle {
+                font-size: 1.2rem;
+                color: #797979;
+            }
+        }
+    }
+}
+
+.mat-icon {
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1/1;
+    background: linear-gradient(130deg, rgba(248, 248, 248, 1) 0%, rgba(193, 193, 193, 1) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px solid transparent;
+    box-shadow: 8px 8px 16px #d5d5d5,
+        -8px -8px 16px #ebebeb;
+
+    &:active {
+        background: linear-gradient(320deg, rgba(248, 248, 248, 1) 0%, rgba(193, 193, 193, 1) 100%);
+        box-shadow: 8px 8px 16px #d5d5d5,
+            -8px -8px 16px #ebebeb;
+    }
+
+
+
+    .icon {
+        width: 16px;
+        height: 16px;
+        aspect-ratio: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        &.edit {
+            background-image: url('/assets/icons/pen-to-square-solid.svg');
+        }
+
+        &.trash {
+            background-image: url('/assets/icons/trash-solid.svg');
+        }
+    }
+}

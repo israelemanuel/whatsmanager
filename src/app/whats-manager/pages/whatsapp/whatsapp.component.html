@@ -1,0 +1,50 @@
+<div class="w-full h-full flex flex-col gap-4 p-4 box-border" style="background-color: #EDEDED">
+    <!-- <div class="bg-slate-400 menu">
+        <span (click)="sidebar = true" class="flex items-center justify-center w-[48px] aspect-square overflow-hidden" style="border-radius: 50%;" matRipple>
+            <span class="w-[24px] h-[24px] bg-no-repeat bg-contain bg-center" style="background-image: url('assets/icons/bars-solid.svg')"></span>
+        </span>
+    </div> -->
+
+    <div class="w-full h-full flex items-center justify-center">
+        <div class="dock w-full h-full md:max-w-[60dvw] box-border flex flex-col justify-between gap-4">
+            <div class="flex flex-col gap-4 relative h-full overflow-hidden">
+                <div class="title">
+                    <span>Lista de Conexões</span>
+                </div>
+
+                <div class="contacts-list">
+                    <ng-container *ngFor="let item of filteredContacts; let i = index">
+                        <div class="list-item" [ngClass]="{'active': item.ativo}">
+                            <div class="flex flex-row gap-4">
+                                <div class="icon signal">
+
+                                </div>
+                                <div class="info">
+                                    <span class="name">{{ item.name }}</span>
+                                </div>
+                            </div>
+                            <div class="neumorphicButton max-w-[180px]" [ngClass]="{'whatsapp': item.ativo}"
+                                (click)="connectContactID(item)">
+                                <ng-container *ngIf="item.ativo">
+                                    <span>Desconectar</span>
+                                </ng-container>
+
+                                <ng-container *ngIf="!item.ativo">
+                                    <span>Conectar</span>
+                                </ng-container>
+
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="box-border px-[32px]">
+                <div class="neumorphicButton whatsapp">
+                    <span>Adicionar Whatsapp</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
