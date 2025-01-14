@@ -23,27 +23,38 @@
                                     <span class="name">{{ item.name }}</span>
                                 </div>
                             </div>
-                            <div class="neumorphicButton" [ngClass]="{'whatsapp': item.ativo}"
-                                (click)="connectContactID(item)">
-                                <ng-container *ngIf="item.ativo">
-                                    <ng-container *ngIf="!isMobile">
-                                        <span>Desconectar</span>
-                                    </ng-container>
-                                    <ng-container *ngIf="isMobile">
-                                        <span class="icon" [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
-                                    </ng-container>
-                                </ng-container>
+                            <div class="flex items-center gap-4">
 
-                                <ng-container *ngIf="!item.ativo">
-                                    <ng-container *ngIf="!isMobile">
-                                        <span>Conectar</span>
+                                <button class="neumorphicButtonIcon flat" (click)="removeWhatsappDialog(item)">
+                                    <span class="button-icon trash"></span>
+                                </button>
+
+                                <div class="neumorphicButton" [ngClass]="{'whatsapp': item.ativo}"
+                                    (click)="connectWhatsappDialog(item)">
+                                    <ng-container *ngIf="item.ativo">
+                                        <ng-container *ngIf="!isMobile">
+                                            <span>Desconectar</span>
+                                        </ng-container>
+                                        <ng-container *ngIf="isMobile">
+                                            <span class="icon"
+                                                [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+                                        </ng-container>
                                     </ng-container>
-                                    <ng-container *ngIf="isMobile">
-                                        <span class="icon" [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+
+                                    <ng-container *ngIf="!item.ativo">
+                                        <ng-container *ngIf="!isMobile">
+                                            <span>Conectar</span>
+                                        </ng-container>
+                                        <ng-container *ngIf="isMobile">
+                                            <span class="icon"
+                                                [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+                                        </ng-container>
                                     </ng-container>
-                                </ng-container>
+                                </div>
+
 
                             </div>
+
                         </div>
                     </ng-container>
                 </div>

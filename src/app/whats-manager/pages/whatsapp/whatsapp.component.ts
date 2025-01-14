@@ -183,6 +183,10 @@ export class WhatsappComponent implements OnInit {
 
 
     connectContactID(contact: any) {
+
+
+
+
         this.filteredContacts = this.contactsList.map((item: any) => {
             if (item.id === contact.id) {
                 item.ativo = !item.ativo;
@@ -192,6 +196,7 @@ export class WhatsappComponent implements OnInit {
     }
 
     addWhatsappDialog(): void {
+
         const dialogRef = this.dialog.open(addWhatsappComponent, {
             panelClass: 'dialog-reset',
             width: '400px',
@@ -200,6 +205,35 @@ export class WhatsappComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
         });
+    }
+
+    removeWhatsappDialog(item: any): void {
+
+        const dialogRef = this.dialog.open(removeWhatsappComponent, {
+            panelClass: 'dialog-reset',
+            width: '400px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
+
+    connectWhatsappDialog(item: any) {
+        const client = item;
+
+        const dialogRef = this.dialog.open(connectWhatsappComponent, {
+            panelClass: 'dialog-reset',
+            width: '800px',
+        });
+
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.status === 'close') {
+                this.connectContactID(client);
+            }
+        }
+        );
     }
 
     setViewWidth() {
@@ -241,6 +275,70 @@ export class addWhatsappComponent {
 
     close() {
         this.dialogRef.close();
+    }
+
+    open() {
+        this.dialogRef.close();
+    }
+
+}
+
+
+@Component({
+    selector: 'remove-whatsapp-dialog',
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule
+
+    ],
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: './remove-whatsapp-dialog.component.html',
+    styleUrl: './whatsapp.component.scss'
+})
+
+export class removeWhatsappComponent {
+
+    constructor(
+        public dialogRef: MatDialogRef<removeWhatsappComponent>,
+    ) { }
+
+    close() {
+        this.dialogRef.close({ status: 'close' });
+    }
+
+    open() {
+        this.dialogRef.close();
+    }
+
+}
+
+
+@Component({
+    selector: 'add-whatsapp-dialog',
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule
+
+    ],
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: './connect-whatsapp-dialog.component.html',
+    styleUrl: './whatsapp.component.scss'
+})
+
+export class connectWhatsappComponent {
+
+    constructor(
+        public dialogRef: MatDialogRef<connectWhatsappComponent>,
+    ) { }
+
+    close() {
+        this.dialogRef.close({ status: 'close' });
     }
 
     open() {

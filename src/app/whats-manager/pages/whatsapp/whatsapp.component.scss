@@ -129,6 +129,16 @@
         height: var(--mdc-filled-button-container-height, 48px) !important;
     }
 
+
+
+    .fake-qr-code{
+
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-image: url('/assets/icons/qr-code-fake.svg');
+    }
+
     @keyframes up {
         from {
             transform: perspective(1000px) rotate3d(1, 0, 0, -45deg);
