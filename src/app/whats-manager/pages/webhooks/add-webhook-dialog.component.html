@@ -1,0 +1,33 @@
+<div class="dialog-reset">
+    <div class="flex flex-col justify-between gap-4 p-6 max-w-[800px] overflow-x-hidden">
+        <div class="w-full font-bold" style="font-size: 1.6rem;">
+            <span class="neumprphicTitle">Tipo de Webhook</span>
+        </div>
+        <div class="form w-full flex flex-col gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="col-span-1 md:col-span-4">
+                    <mat-form-field class="w-full custom no_hint neumorphicInput" appearance="outline">
+                        <mat-label>Favorite food</mat-label>
+                        <mat-select panelClass="neumorphicDropdown">
+                          <ng-container *ngFor="let item of listTypeHewbHooks; let i = index">
+                            <mat-option [value]="i">{{item.title}}</mat-option>
+                          </ng-container>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="w-full flex flex-col justify-end gap-4">
+
+            <button class="w-full neumorphicButton full" (click)="close()">
+                <span>Cancelar</span>
+            </button>
+            <button class="w-full neumorphicButton full webhooks" (click)="close()">
+                <span>Confirmar</span>
+            </button>
+        </div>
+    </div>
+</div>

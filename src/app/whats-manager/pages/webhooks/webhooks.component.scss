@@ -1,229 +1,124 @@
-.dock {
-    --main-curve: 16px;
+app-webhooks {
+
+    .dock {
+        --main-curve: 16px;
 
 
-    background-color: #EDEDED;
-    padding: 32px 0px;
-    border-radius: 32px;
-    box-shadow: 41px 41px 82px #c9c9c9,
-        -41px -41px 82px #ffffff;
-    font-family: 'Nunito', sans-serif;
+        background-color: #EDEDED;
+        padding: 32px 0px;
+        border-radius: 32px;
+        box-shadow: 41px 41px 82px #c9c9c9,
+            -41px -41px 82px #ffffff;
+        font-family: 'Nunito', sans-serif;
 
-    .title {
-        color: transparent;
-        text-shadow: 0px 2px 4px #fff, 0 0 0 #797979, 0px 2px 4px #fff;
-        font-weight: bold;
-        position: relative;
-        font-size: 1.4rem;
-        padding: 0px 32px;
+        .title {
+            color: transparent;
+            text-shadow: 0px 2px 4px #fff, 0 0 0 #797979, 0px 2px 4px #fff;
+            font-weight: bold;
+            position: relative;
+            font-size: 1.4rem;
+            padding: 0px 32px;
+        }
+
     }
 
-
-    .neumorphicButton {
-        width: 100%;
-        height: 64px;
+    .webhooks-list {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        letter-spacing: 40%;
-        text-transform: uppercase;
-        position: relative;
-        overflow: hidden;
-        font-size: 1.2rem;
-        font-weight: bold;
-        user-select: none;
-        cursor: pointer;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-snap-align: start;
+        scroll-behavior: smooth;
+        padding: 16px 16px 16px 32px;
+        box-sizing: border-box;
 
-        border-radius: var(--main-curve);
-        box-shadow: 10px 10px 10px #c9c9c9, -10px -10px 10px #ffffff;
+        &::-webkit-scrollbar {
+            width: 16px;
 
-        &:active {
-            box-shadow: inset 10px 10px 10px #c9c9c9, inset -10px -10px 10px #ffffff;
         }
 
-        &.whatsapp {
+        &::-webkit-scrollbar-track {
+            border-radius: var(--main-curve) var(--main-curve);
+            background-color: transparent;
+            margin-top: var(--main-curve);
+            margin-bottom: var(--main-curve);
+        }
 
-            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
-            color: rgba(121, 121, 121, 0.5);
-            text-shadow: 0px 2px 4px #00E923, 0 0 0 #797979, 0px 2px 4px #00E923;
+        &::-webkit-scrollbar-thumb {
+            border-radius: 32px;
+            background-color: #c9c9c9;
+            background-clip: padding-box;
+            border-left: 0px solid transparent;
+            border-right: 0px solid transparent;
+            border-top: 0px solid transparent;
+            border-bottom: 0px solid transparent;
+            min-height: 56px;
+        }
 
-
-
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #00E923;
-                mix-blend-mode: multiply;
+        .webhook-list-item {
+            @media(max-width: 767px){
+                border: 1px solid var(--main-background);
+                background: var(--main-background);
+                box-shadow: var(--main-shadow), var(--main-inset-shadow);
+                padding: 16px;
+                box-sizing: border-box;
+                border-radius: 16px;
             }
-        }
 
-        &.webhooks {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
-            color: rgba(121, 121, 121, 0.5);
-            text-shadow: 0px 2px 4px #00AFE9, 0 0 0 #797979, 0px 2px 4px #00AFE9;
+            .text-content {
+                display: flex;
+                flex-direction: column;
 
+                .content-title {
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                }
 
+                @media(max-width: 767px){
+                    .content-title {
+                        font-size: 1.2rem;
+                    }
+                }
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #00AFE9;
-                mix-blend-mode: multiply;
+                .content-subtitle {
+                    font-size: 1.2rem;
+                    color: #797979;
+                }
             }
-        }
-
-        &.disabled {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
-            color: rgba(121, 121, 121, 0.5);
-            text-shadow: 0px 2px 4px #00AFE9, 0 0 0 #797979, 0px 2px 4px #00AFE9;
-            position: relative;
-            user-select: none;
-            cursor: not-allowed;
         }
     }
 
 }
 
-.contacts-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    scroll-snap-align: start;
-    scroll-behavior: smooth;
-    padding: 16px 16px 16px 32px;
-    box-sizing: border-box;
 
-    &::-webkit-scrollbar {
-        width: 16px;
-
-    }
-
-    &::-webkit-scrollbar-track {
-        border-radius: var(--main-curve) var(--main-curve);
-        background-color: transparent;
-        margin-top: var(--main-curve);
-        margin-bottom: var(--main-curve);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: 32px;
-        background-color: #c9c9c9;
-        background-clip: padding-box;
-        border-left: 0px solid transparent;
-        border-right: 0px solid transparent;
-        border-top: 0px solid transparent;
-        border-bottom: 0px solid transparent;
-        min-height: 56px;
-    }
+.dialog-reset {
 
 
-    .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    --main-curve: 16px;
+
+    animation: up .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+
+
+
+
+    .fake-qr-code {
+
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        width: 32px;
-        height: 32px;
-        aspect-ratio: 1/1;
+        background-image: url('/assets/icons/qr-code-fake.svg');
+    }
 
-
-        &.signal {
-            background-image: url('/assets/icons/wifi-solid.svg');
+    @keyframes up {
+        from {
+            transform: perspective(1000px) rotate3d(1, 0, 0, -45deg);
         }
-    }
 
-    .info {
-        display: flex;
-        align-items: center;
-
-    }
-
-    .list-item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 1.2rem;
-
-        &.active {
-            color: #009416;
-
-            &.signal {
-                background-color: #009416;
-            }
-        }
-    }
-
-}
-
-.webhooks-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    scroll-snap-align: start;
-    scroll-behavior: smooth;
-    padding: 16px 16px 16px 32px;
-    box-sizing: border-box;
-
-    &::-webkit-scrollbar {
-        width: 16px;
-
-    }
-
-    &::-webkit-scrollbar-track {
-        border-radius: var(--main-curve) var(--main-curve);
-        background-color: transparent;
-        margin-top: var(--main-curve);
-        margin-bottom: var(--main-curve);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: 32px;
-        background-color: #c9c9c9;
-        background-clip: padding-box;
-        border-left: 0px solid transparent;
-        border-right: 0px solid transparent;
-        border-top: 0px solid transparent;
-        border-bottom: 0px solid transparent;
-        min-height: 56px;
-    }
-
-    .list-item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-
-        .text-content {
-            display: flex;
-            flex-direction: column;
-
-            .content-title {
-                font-size: 1.4rem;
-                font-weight: bold;
-            }
-
-            .content-subtitle {
-                font-size: 1.2rem;
-                color: #797979;
-            }
+        to {
+            transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
         }
     }
 }

@@ -26,10 +26,63 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root{
+    --main-shadow: 10px 10px 10px hsl(0, 0%, 86%), -10px -10px 10px hsl(0, 0%, 96%);
+    --main-inset-shadow: inset 10px 10px 10px hsl(0, 0%, 86%), inset -10px -10px 10px hsl(0, 0%, 96%);
+    --main-background: #EDEDED;
+
+
+    --main-curve: 16px;
+    --main-padding: 16px;
+    --double-padding: 16px;
+    --main-transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+
+    --convex-shadow: linear-gradient(130deg, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 86%) 100%) ;
+    --concave-shadow: linear-gradient(130deg, hsl(0, 0%, 86%) 0%, hsl(0, 0%, 96%) 100%) ;
+
+
+
+}
+
 //reset da superficie do dialog
 .mat-mdc-dialog-surface {
     overflow: hidden !important;
 }
+
+.mat-mdc-form-field.custom.no_hint {
+
+    .mat-mdc-form-field-bottom-align {
+        display: none;
+    }
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 16px !important;
+}
+
+.mdc-text-field--outlined {
+    //angular >= 16
+    --mdc-outlined-text-field-container-shape: var(--main-curve) !important;
+    //angular <=15
+    --mdc-shape-small: var(--main-curve) !important;
+
+
+}
+
+.mat-mdc-form-field.custom.no_hint {
+    .mat-mdc-form-field-bottom-align {
+        display: none;
+    }
+}
+
+
+.mat-mdc-unelevated-button {
+    height: var(--mdc-filled-button-container-height, 48px) !important;
+}
+
+
+
 
 .neumprphicTitle {
     color: transparent;
@@ -66,7 +119,7 @@ body {
     box-sizing: border-box;
 
     border-radius: var(--main-curve);
-    box-shadow: 10px 10px 10px #c9c9c9, -10px -10px 10px #ffffff;
+    box-shadow: var(--main-shadow);
 
     &.whatsapp {
 
@@ -88,8 +141,27 @@ body {
         }
     }
 
+    &.webhooks {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
+        color: rgba(121, 121, 121, 0.5);
+        text-shadow: 0px 2px 4px #00AFE9, 0 0 0 #797979, 0px 2px 4px #00AFE9;
+
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #00AFE9;
+            mix-blend-mode: multiply;
+        }
+    }
+
     &:active {
-        box-shadow: inset 10px 10px 10px #c9c9c9, inset -10px -10px 10px #ffffff;
+        box-shadow: var(--main-inset-shadow);
     }
 
     &:focus-visible {
@@ -158,33 +230,30 @@ body {
     width: 56px;
     height: 56px;
     aspect-ratio: 1/1;
-    border-radius: 50%;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 0px solid transparent;
     cursor: pointer;
-    box-shadow: 8px 8px 16px #d5d5d5,
-        -8px -8px 16px #ebebeb;
+    box-shadow: var(--main-shadow);
+    transition: var(--main-transition);
 
 
     &.convex {
-        background: linear-gradient(130deg, rgba(248, 248, 248, 1) 0%, rgba(193, 193, 193, 1) 100%);
+        background: var(--convex-shadow);
 
         &:active {
-            background: linear-gradient(320deg, rgba(248, 248, 248, 1) 0%, rgba(193, 193, 193, 1) 100%);
-            box-shadow: 8px 8px 16px #d5d5d5,
-                -8px -8px 16px #ebebeb;
+            background: var(--concave-shadow);
         }
 
     }
 
     &.flat {
-        background: #EDEDED;
+        background: var(--main-background);
 
         &:active {
-            box-shadow: inset 8px 8px 16px #d5d5d5,
-                inset -8px -8px 16px #ebebeb;
+            box-shadow: var(--main-inset-shadow);
         }
 
     }
@@ -216,8 +285,6 @@ body {
             }
         }
     }
-
-
 
     .button-icon {
         width: 16px;
@@ -254,4 +321,11 @@ body {
             background-image: url('/assets/icons/xmark-regular.svg');
         }
     }
+}
+
+.neumorphicDropdown{
+    background-color: #EDEDED !important;
+    border-radius: 16px !important;
+    box-shadow: 16px 16px 32px #bcbcbc, -16px -16px 32px #ffffff !important;
+    min-height: 64px !important;
 }

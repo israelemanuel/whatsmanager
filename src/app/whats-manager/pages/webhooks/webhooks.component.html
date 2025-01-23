@@ -14,16 +14,19 @@
 
                 <div class="webhooks-list">
                     <ng-container *ngFor="let item of filteredWeHooks; let i = index">
-                        <div class="list-item">
+                        <div class="webhook-list-item flex flex-col md:flex-row justify-between gap-4">
                             <div class="flex flex-row gap-4 items-center">
+
                                 <mat-slide-toggle></mat-slide-toggle>
+
                                 <div class="text-content">
                                     <div class="content-title">{{item.title}}</div>
                                     <div class="content-subtitle">{{item.subtitle}}</div>
                                 </div>
                             </div>
 
-                            <div class="flex flex-row gap-4">
+                            <div class="flex flex-row gap-4 items-center justify-end">
+
                                 <button class="neumorphicButtonIcon convex">
                                     <span class="button-icon edit"></span>
                                 </button>
@@ -37,7 +40,7 @@
                 </div>
             </div>
             <div class="box-border px-[32px]">
-                <div class="neumorphicButton webhooks">
+                <div class="neumorphicButton full webhooks" (click)="addWebHookDialog()">
                     <span>Adicionar Webhook</span>
                 </div>
             </div>
