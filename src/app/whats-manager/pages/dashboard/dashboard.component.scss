@@ -9,8 +9,7 @@
     padding: 8px;
     z-index: 10;
     box-sizing: border-box;
-    box-shadow: 16px 16px 16px #c9c9c9,
-        -16px -16px 16px #ffffff;
+    box-shadow: var(--big-shadow-card)
 }
 
 .aside {
@@ -118,9 +117,8 @@
 }
 
 .dock {
-    background-color: #EDEDED;
+    background-color: var(--mat-sys-background);
     padding: 32px;
     border-radius: 32px;
-    box-shadow: 41px 41px 82px #c9c9c9,
-        -41px -41px 82px #ffffff;
+    box-shadow:var(--big-shadow-card);
 }

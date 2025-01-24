@@ -1,6 +1,6 @@
 <div class="backdrop" (click)="sidebar = false" [ngClass]="{'hidden': !sidebar}"></div>
 
-<div class="w-full h-full flex flex-col gap-4 p-4 box-border" style="background-color: #EDEDED">
+<div class="w-full h-full flex flex-col gap-4 p-4 box-border">
     <!-- <div class="bg-slate-400 menu">
         <span (click)="sidebar = true" class="flex items-center justify-center w-[48px] aspect-square overflow-hidden" style="border-radius: 50%;" matRipple>
             <span class="w-[24px] h-[24px] bg-no-repeat bg-contain bg-center" style="background-image: url('assets/icons/bars-solid.svg')"></span>
@@ -23,7 +23,7 @@
                             <span class="opacity-0">i</span>
                         </span>
                     </div>
-                    <span class="w-full text-center" style="font-size: 12px;">{{item.name}}</span>
+                    <span class="w-full text-center" style="font-size: 12px; color: var(--mat-sys-on-background)">{{item.name}}</span>
                 </div>
             </ng-container>
 
