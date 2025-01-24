@@ -1,4 +1,4 @@
-<div class="w-full h-full flex flex-col gap-4 p-4 box-border" style="background-color: #EDEDED">
+<div class="w-full h-full flex flex-col gap-4 p-4 box-border">
     <!-- <div class="bg-slate-400 menu">
         <span (click)="sidebar = true" class="flex items-center justify-center w-[48px] aspect-square overflow-hidden" style="border-radius: 50%;" matRipple>
             <span class="w-[24px] h-[24px] bg-no-repeat bg-contain bg-center" style="background-image: url('assets/icons/bars-solid.svg')"></span>
@@ -8,7 +8,7 @@
     <div class="w-full h-full flex items-center justify-center">
         <div class="dock w-full h-full md:max-w-[60dvw] box-border flex flex-col justify-between gap-4">
             <div class="flex flex-col gap-4 relative h-full overflow-hidden">
-                <div class="title">
+                <div class="neumorphicText title">
                     <span>Lista de Webhooks</span>
                 </div>
 
@@ -28,11 +28,15 @@
                             <div class="flex flex-row gap-4 items-center justify-end">
 
                                 <button class="neumorphicButtonIcon convex">
-                                    <span class="button-icon edit"></span>
+                                    <span class="icon">
+                                        <mat-icon>edit</mat-icon>
+                                    </span>
                                 </button>
 
                                 <button class="neumorphicButtonIcon convex">
-                                    <span class="button-icon trash"></span>
+                                    <span class="icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </span>
                                 </button>
                             </div>
                         </div>
@@ -40,8 +44,8 @@
                 </div>
             </div>
             <div class="box-border px-[32px]">
-                <div class="neumorphicButton full webhooks" (click)="addWebHookDialog()">
-                    <span>Adicionar Webhook</span>
+                <div class="neumorphicButton full bg-cyan-500 color-blend" (click)="addWebHookDialog()">
+                    <span class="text-over-color">Adicionar Webhook</span>
                 </div>
             </div>
 

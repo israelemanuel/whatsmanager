@@ -1,18 +1,36 @@
+body:not(.dark){
+    .fake-qr-code{
+
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background-image: url('/assets/icons/qr-code-fake.svg');
+        filter: invert(0);
+    }
+}
+
+.fake-qr-code{
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url('/assets/icons/qr-code-fake.svg');
+    filter: invert(1);
+}
+
 .dock {
     --main-curve: 16px;
 
 
-    background-color: #EDEDED;
+    background-color: var(--main-background);
     padding: 32px 0px;
     border-radius: 32px;
-    box-shadow: 41px 41px 82px #c9c9c9,
-        -41px -41px 82px #ffffff;
+    box-shadow: var(--big-shadow-card);
     font-family: 'Nunito', sans-serif;
+    position: relative;
+    box-sizing: border-box;
 
     .title {
-        color: transparent;
-        text-shadow: 0px 2px 4px #fff, 0 0 0 #797979, 0px 2px 4px #fff;
-        font-weight: bold;
         position: relative;
         font-size: 1.4rem;
         padding: 0px 32px;
@@ -46,12 +64,12 @@
 
     &::-webkit-scrollbar-thumb {
         border-radius: 32px;
-        background-color: #c9c9c9;
+        background-color: #00e923e4;
         background-clip: padding-box;
-        border-left: 0px solid transparent;
-        border-right: 0px solid transparent;
-        border-top: 0px solid transparent;
-        border-bottom: 0px solid transparent;
+        border-left: 4px solid var(--mat-sys-background);
+        border-right: 4px solid var(--mat-sys-background);
+        border-top: 4px solid var(--mat-sys-background);
+        border-bottom: 4px solid var(--mat-sys-background);
         min-height: 56px;
     }
 
@@ -66,16 +84,13 @@
         width: 32px;
         height: 32px;
         aspect-ratio: 1/1;
-
-
-        &.signal {
-            background-image: url('/assets/icons/wifi-solid.svg');
-        }
+        color: var(--mat-sys-on-background)
     }
 
     .info {
         display: flex;
         align-items: center;
+        color: var(--mat-sys-on-background);
 
     }
 
@@ -101,7 +116,7 @@
 .dialog-reset {
 
 
-    --main-curve: 16px;
+    color: var(--mat-sys-on-background);
 
     animation: up .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 
@@ -129,15 +144,6 @@
         height: var(--mdc-filled-button-container-height, 48px) !important;
     }
 
-
-
-    .fake-qr-code{
-
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        background-image: url('/assets/icons/qr-code-fake.svg');
-    }
 
     @keyframes up {
         from {

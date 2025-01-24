@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,11 +9,25 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet
+    RouterOutlet,
+    MatSlideToggleModule,
+    MatIcon
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'whatsManager';
+
+
+
+  constructor() {
+
+  }
+
+  onThemeChange(event: MatSlideToggleChange) {
+    const page = document.body;
+
+    page.classList.toggle('dark');
+}
 }

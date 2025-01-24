@@ -2,6 +2,7 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 
+@include mat.core();
 @tailwind utilities;
 
 html {
@@ -9,12 +10,61 @@ html {
                 primary: mat.$azure-palette,
                 tertiary: mat.$blue-palette,
             ),
-            typography: Roboto,
+            typography: Nunito,
             density: 0,
         ));
+
+    --mat-sys-background: #ededed;
+
+    --main-shadow: 10px 10px 10px hsl(0, 0%, 86%), -10px -10px 10px hsl(0, 0%, 96%);
+    --main-inset-shadow: inset 10px 10px 10px hsl(0, 0%, 86%), inset -10px -10px 10px hsl(0, 0%, 96%);
+    --big-shadow-card: 41px 41px 82px hsl(0, 0%, 86%), -41px -41px 82px hsl(0, 0%, 100%);
+    --neumorphic-color: #c8c8c8;
+    --text-shadow: 0px 2px 2px #fff, 0 0 0 #515151, 0px 2px 2px #fff;
+    --convex-shadow: linear-gradient(130deg, hsla(0, 0%, 96%, 0) 0%, hsl(0, 0%, 86%) 100%);
+    --concave-shadow: linear-gradient(130deg, hsl(0, 0%, 86%) 0%, hsl(0, 0%, 96%) 100%);
+}
+
+.overrides {
+    @include mat.theme-overrides(());
+}
+
+.dark {
+    color-scheme: dark;
+
+    @include mat.theme((color: (theme-type: dark,
+                primary: mat.$azure-palette,
+                tertiary: mat.$blue-palette,
+            ),
+            typography: Nunito,
+            density: 0,
+        ));
+
+    --mat-sys-background: #1d1d1d;
+
+
+
+    --main-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #121212;
+    --main-inset-shadow: inset 10px 10px 10px #0f0f0f, inset -10px -10px 10px #121212;
+    --big-shadow-card: 41px 48px 64px #0f0f0f, -48px -48px 64px #121212;
+    --neumorphic-color: rgb(135, 135, 135);
+    --text-shadow: 0px 2px 2px #0f0f0f, 0 0 0 #000000, 0px 2px 2px #121212;
+
+    --convex-shadow: linear-gradient(130deg, #0f0f0f 0%, #121212 100%);
+    --concave-shadow: linear-gradient(130deg, #121212 0%, #0f0f0f 100%);
+
+
+}
+
+:root{
+    --main-curve: 32px;
+    --main-padding: 16px;
+    --double-padding: 16px;
+    --main-transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 /* You can add global styles to this file, and also import other style files */
+
 
 html,
 body {
@@ -24,22 +74,6 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-:root{
-    --main-shadow: 10px 10px 10px hsl(0, 0%, 86%), -10px -10px 10px hsl(0, 0%, 96%);
-    --main-inset-shadow: inset 10px 10px 10px hsl(0, 0%, 86%), inset -10px -10px 10px hsl(0, 0%, 96%);
-    --main-background: #EDEDED;
-
-
-    --main-curve: 16px;
-    --main-padding: 16px;
-    --double-padding: 16px;
-    --main-transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-
-    --convex-shadow: linear-gradient(130deg, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 86%) 100%) ;
-    --concave-shadow: linear-gradient(130deg, hsl(0, 0%, 86%) 0%, hsl(0, 0%, 96%) 100%) ;
 
 
 
@@ -77,255 +111,18 @@ body {
 }
 
 
-.mat-mdc-unelevated-button {
-    height: var(--mdc-filled-button-container-height, 48px) !important;
-}
 
 
 
 
-.neumprphicTitle {
-    color: transparent;
-    text-shadow: 0px 2px 4px #fff, 0 0 0 #797979, 0px 2px 4px #fff;
-    font-weight: bold;
-    position: relative;
-    font-size: 1.4rem;
-}
-
-
-.neumorphicInput {
-    background: linear-gradient(130deg, rgba(248, 248, 248, 1) 0%, rgba(193, 193, 193, 1) 100%);
-    box-shadow: inset 10px 10px 10px #c9c9c9, inset -10px -10px 10px #ffffff;
-    border-radius: 16px;
-}
-
-.neumorphicButton {
-    width: max-content;
-    min-width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    letter-spacing: 40%;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    font-size: 1.2rem;
-    font-weight: bold;
-    user-select: none;
-    cursor: pointer;
-    border: none !important;
-    padding: 0px 16px;
-    box-sizing: border-box;
-
-    border-radius: var(--main-curve);
-    box-shadow: var(--main-shadow);
-
-    &.whatsapp {
-
-        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
-        color: rgba(121, 121, 121, 0.5);
-        text-shadow: 0px 2px 4px #00E923, 0 0 0 #797979, 0px 2px 4px #00E923;
-
-
-
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #00E923;
-            mix-blend-mode: multiply;
-        }
-    }
-
-    &.webhooks {
-        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
-        color: rgba(121, 121, 121, 0.5);
-        text-shadow: 0px 2px 4px #00AFE9, 0 0 0 #797979, 0px 2px 4px #00AFE9;
-
-
-
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #00AFE9;
-            mix-blend-mode: multiply;
-        }
-    }
-
-    &:active {
-        box-shadow: var(--main-inset-shadow);
-    }
-
-    &:focus-visible {
-        outline: none;
-
-        ::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: var(--main-curve);
-            background-color: rgba(100, 100, 100, 0.2);
-            pointer-events: none;
-            animation: grow .2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-
-        }
-
-        @keyframes grow {
-            0% {
-                transform: scale(0);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-    }
-
-    &.disabled {
-        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(121, 121, 121, 0.5) 100%);
-        color: rgba(121, 121, 121, 0.5);
-        text-shadow: 0px 2px 4px #00E923, 0 0 0 #797979, 0px 2px 4px #00E923;
-        position: relative;
-        user-select: none;
-        cursor: not-allowed;
-    }
-
-    &.full {
-        width: 100% !important;
-    }
-
-    .icon {
-        width: 24px !important;
-        height: 24px !important;
-        aspect-ratio: 1/1;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 16px 16px;
-
-        &.connected {
-            background-image: url('/assets/icons/link-solid.svg');
-        }
-
-        &.unconnected {
-            background-image: url('/assets/icons/link-slash-solid.svg');
-        }
-    }
-
-
-}
-
-.neumorphicButtonIcon {
-    position: relative;
-    width: 56px;
-    height: 56px;
-    aspect-ratio: 1/1;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0px solid transparent;
-    cursor: pointer;
-    box-shadow: var(--main-shadow);
-    transition: var(--main-transition);
-
-
-    &.convex {
-        background: var(--convex-shadow);
-
-        &:active {
-            background: var(--concave-shadow);
-        }
-
-    }
-
-    &.flat {
-        background: var(--main-background);
-
-        &:active {
-            box-shadow: var(--main-inset-shadow);
-        }
-
-    }
-
-    &:focus-visible {
-        outline: none;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(100, 100, 100, 0.2);
-            pointer-events: none;
-            animation: grow .2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-
-        }
-
-        @keyframes grow {
-            0% {
-                transform: scale(0);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-    }
-
-    .button-icon {
-        width: 16px;
-        height: 16px;
-        aspect-ratio: 1/1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        position: relative;
-
-        color: transparent;
-        text-shadow: 0px 2px 4px #fff, 0 0 0 #797979, 0px 2px 4px #fff;
-        font-weight: bold;
-        position: relative;
-        font-size: 1.4rem;
-
-
-        &.edit {
-            background-image: url('/assets/icons/pen-to-square-solid.svg');
-        }
-
-        &.trash {
-            background-image: url('/assets/icons/trash-solid.svg');
-        }
-
-        // &.add{
-
-        // }
-
-        &.close {
-            background-image: url('/assets/icons/xmark-regular.svg');
-        }
-    }
-}
-
-.neumorphicDropdown{
+.neumorphicDropdown {
     background-color: #EDEDED !important;
     border-radius: 16px !important;
     box-shadow: 16px 16px 32px #bcbcbc, -16px -16px 32px #ffffff !important;
     min-height: 64px !important;
 }
+
+
+@import '../public/scss/neumorphicInputs.scss';
+@import '../public/scss/neumorphicButtons.scss';
+@import '../public/scss/neumorphicText.scss';

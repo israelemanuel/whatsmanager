@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
@@ -12,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
     imports: [
         CommonModule,
         MatRippleModule,
-        MatDialogModule
+        MatDialogModule,
+        MatIconModule
     ],
     templateUrl: './whatsapp.component.html',
     styleUrl: './whatsapp.component.scss'
@@ -317,13 +319,14 @@ export class removeWhatsappComponent {
 
 
 @Component({
-    selector: 'add-whatsapp-dialog',
+    selector: 'connect-whatsapp-dialog',
     imports: [
         CommonModule,
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
 
     ],
     encapsulation: ViewEncapsulation.None,

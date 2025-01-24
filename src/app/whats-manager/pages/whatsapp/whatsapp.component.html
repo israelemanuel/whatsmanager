@@ -1,14 +1,9 @@
-<div class="w-full h-full flex flex-col gap-4 p-4 box-border" style="background-color: #EDEDED">
-    <!-- <div class="bg-slate-400 menu">
-        <span (click)="sidebar = true" class="flex items-center justify-center w-[48px] aspect-square overflow-hidden" style="border-radius: 50%;" matRipple>
-            <span class="w-[24px] h-[24px] bg-no-repeat bg-contain bg-center" style="background-image: url('assets/icons/bars-solid.svg')"></span>
-        </span>
-    </div> -->
+<div class="relative w-full h-full overflow-hidden flex flex-col items-center justify-center p-6 box-border">
 
     <div class="w-full h-full flex items-center justify-center">
         <div class="dock w-full h-full md:max-w-[60dvw] box-border flex flex-col justify-between gap-4">
             <div class="flex flex-col gap-4 relative h-full overflow-hidden">
-                <div class="neumprphicTitle px-[32px]">
+                <div class="neumorphicText title">
                     <span>Lista de Conexões</span>
                 </div>
 
@@ -16,8 +11,8 @@
                     <ng-container *ngFor="let item of filteredContacts; let i = index">
                         <div class="list-item" [ngClass]="{'active': item.ativo}">
                             <div class="flex flex-row gap-4">
-                                <div class="icon signal">
-
+                                <div class="icon">
+                                    <mat-icon>wifi</mat-icon>
                                 </div>
                                 <div class="info">
                                     <span class="name">{{ item.name }}</span>
@@ -26,7 +21,7 @@
                             <div class="flex items-center gap-4">
 
                                 <button class="neumorphicButtonIcon flat" (click)="removeWhatsappDialog(item)">
-                                    <span class="button-icon trash"></span>
+                                    <mat-icon>delete</mat-icon>
                                 </button>
 
                                 <div class="neumorphicButton" [ngClass]="{'whatsapp': item.ativo}"
@@ -36,18 +31,29 @@
                                             <span>Desconectar</span>
                                         </ng-container>
                                         <ng-container *ngIf="isMobile">
-                                            <span class="icon"
-                                                [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+                                            <span class="icon">
+                                                <ng-container *ngIf="item.ativo">
+                                                    <mat-icon>link_off</mat-icon>
+                                                </ng-container>
+                                                <ng-container *ngIf="!item.ativo">
+                                                    <mat-icon>link</mat-icon>
+                                                </ng-container>
+                                            </span>
                                         </ng-container>
                                     </ng-container>
 
                                     <ng-container *ngIf="!item.ativo">
                                         <ng-container *ngIf="!isMobile">
-                                            <span>Conectar</span>
+                                            <span class="text">Conectar</span>
                                         </ng-container>
                                         <ng-container *ngIf="isMobile">
-                                            <span class="icon"
-                                                [ngClass]="{'connected': !item.ativo, 'unconnected': item.ativo}"></span>
+                                            <span class="icon">
+                                                <ng-container *ngIf="item.ativo">
+                                                    <mat-icon>link_off</mat-icon>
+                                                </ng-container>
+                                                <ng-container *ngIf="!item.ativo">
+                                                    <mat-icon>link</mat-icon>
+                                                </ng-container></span>
                                         </ng-container>
                                     </ng-container>
                                 </div>
@@ -60,8 +66,8 @@
                 </div>
             </div>
             <div class="box-border px-[32px]">
-                <div class="neumorphicButton full whatsapp" (click)="addWhatsappDialog()">
-                    <span>Adicionar Whatsapp</span>
+                <div class="neumorphicButton full bg-[#00e923e4] color-blend" (click)="addWhatsappDialog()">
+                    <span class="text-over-color">Adicionar Whatsapp</span>
                 </div>
             </div>
 

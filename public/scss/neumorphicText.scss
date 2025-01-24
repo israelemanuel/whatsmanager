@@ -1,0 +1,13 @@
+body:not(.dark) {
+    .neumorphicText {
+        color: transparent;
+        text-shadow: var(--text-shadow);
+        font-weight: bold;
+    }
+}
+
+.neumorphicText {
+    color: var(--mat-sys-on-background);
+    text-shadow: var(--text-shadow-dark);
+    font-weight: bold;
+}

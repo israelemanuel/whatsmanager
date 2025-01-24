@@ -1,0 +1,12 @@
+// https://www.youtube.com/watch?v=K-hFLFo3InQ Estudar Depois
+
+.neumorphicInput {
+    background: var(--main-background);
+    box-shadow: var(--main-inset-shadow);
+    border-radius: var(--main-curve);
+}
+
+.mat-mdc-form-field{
+    --mdc-outlined-text-field-outline-color: transparent;
+}
+

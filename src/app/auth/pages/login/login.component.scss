@@ -1,0 +1,26 @@
+app-login{
+    --dimension: 384px;
+
+    .dock {
+        background-color: var(--mat-sys-background);
+        box-shadow: var(--big-shadow-card);
+        font-family: 'Nunito', sans-serif;
+        width: var(--dimension);
+        min-width: 288px;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 32px;
+        border-radius: calc(var(--dimension) / 8);
+
+        .title {
+            position: relative;
+            font-size: 1.4rem;
+            padding: 0px 32px;
+        }
+
+    }
+}
+
+
