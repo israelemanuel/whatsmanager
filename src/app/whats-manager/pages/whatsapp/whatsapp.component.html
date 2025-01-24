@@ -3,9 +3,15 @@
     <div class="w-full h-full flex items-center justify-center">
         <div class="dock w-full h-full md:max-w-[60dvw] box-border flex flex-col justify-between gap-4">
             <div class="flex flex-col gap-4 relative h-full overflow-hidden">
-                <div class="neumorphicText title">
-                    <span>Lista de Conexões</span>
+                <div class="flex flex-row gap-4 items-center title">
+                    <button [routerLink]="['/admin']" class="aspect-square w-[40px] rounded-full flex flex-row items-center justify-center border-none" marRipple>
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <div class="neumorphicText">
+                        <span>Lista de Conexões</span>
+                    </div>
                 </div>
+
 
                 <div class="contacts-list">
                     <ng-container *ngFor="let item of filteredContacts; let i = index">

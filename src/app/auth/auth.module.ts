@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/login/login.component';
 import { authRoutingModule } from './auth-routing.module';
-import { RouterOutlet } from '@angular/router';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 
 
 
@@ -11,7 +11,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     CommonModule,
     authRoutingModule,
-    LoginComponent
+    LoginComponent,
+    PasswordResetComponent
   ]
 })
 export class AuthModule { }

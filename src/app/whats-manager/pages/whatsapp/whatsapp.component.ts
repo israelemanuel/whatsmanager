@@ -7,6 +7,7 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-whatsapp',
@@ -14,7 +15,8 @@ import { MatInputModule } from '@angular/material/input';
         CommonModule,
         MatRippleModule,
         MatDialogModule,
-        MatIconModule
+        MatIconModule,
+        RouterLink
     ],
     templateUrl: './whatsapp.component.html',
     styleUrl: './whatsapp.component.scss'
@@ -326,7 +328,8 @@ export class removeWhatsappComponent {
         MatInputModule,
         ReactiveFormsModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatRippleModule,
 
     ],
     encapsulation: ViewEncapsulation.None,

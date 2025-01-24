@@ -21,8 +21,10 @@ html {
     --big-shadow-card: 41px 41px 82px hsl(0, 0%, 86%), -41px -41px 82px hsl(0, 0%, 100%);
     --neumorphic-color: #c8c8c8;
     --text-shadow: 0px 2px 2px #fff, 0 0 0 #515151, 0px 2px 2px #fff;
-    --convex-shadow: linear-gradient(130deg, hsla(0, 0%, 96%, 0) 0%, hsl(0, 0%, 86%) 100%);
+    --convex-shadow: linear-gradient(130deg, hsl(0, 0%, 86%) 0%, hsl(0, 0%, 86%) 100%);
     --concave-shadow: linear-gradient(130deg, hsl(0, 0%, 86%) 0%, hsl(0, 0%, 96%) 100%);
+
+    --disabled-degrade: var(--mat-sys-background);
 }
 
 .overrides {
@@ -52,6 +54,8 @@ html {
 
     --convex-shadow: linear-gradient(130deg, #0f0f0f 0%, #121212 100%);
     --concave-shadow: linear-gradient(130deg, #121212 0%, #0f0f0f 100%);
+
+    --disabled-degrade: var(--mat-sys-background);
 
 
 }

@@ -1,37 +1,116 @@
 <div class="relative w-full h-full overflow-hidden flex flex-col items-center justify-center">
 
-    <div class="dock">
-        <form class="grid grid-cols gap-8">
+    <div @switchAnimation class="dock" *ngIf="!newAccount && !forggotPassword && !accountReset">
+        <form class="grid grid-cols gap-8" [formGroup]="loginForm">
             <div class="col-span-1">
                 <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
-                    <input matInput placeholder="Ex. Pizza" value="">
+                    <input matInput formControlName="email" placeholder="E-mail" value="">
                 </mat-form-field>
             </div>
 
             <div class="col-span-1">
+
                 <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
-                    <input matInput placeholder="Ex. Pizza" value="">
+                    <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Senha"
+                        formControlName="password" />
+                    <button type="button" mat-icon-button matSuffix (click)="togglePaswwordVisibility($event)"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                 </mat-form-field>
             </div>
 
             <div class="col-span-1">
-                <button type="button" mat-flat-button class="neumorphicButton bg-yellow-400 color-blend full rounded">
+                <button type="button" class="neumorphicButton bg-yellow-400 color-blend full rounded"
+                    [ngClass]="{'disabled': loginForm.invalid}">
                     <span class="text-over-color">Login</span>
                 </button>
             </div>
 
             <div class="col-span-1">
-                <button type="button" mat-flat-button class="neumorphicButton bg-[var(--mat-sys-background)] full rounded">
+                <button (click)="switchToSignUp()" type="button"
+                    class="neumorphicButton bg-[var(--mat-sys-background)] full rounded">
                     <span class="text">Signup</span>
                 </button>
             </div>
 
             <div class="flex items-center justify-center w-full h-[24]">
-                <a href="https://google.com" class="neumorphicLink" matRipple><span>Esqueci minha senha</span></a>
+                <a (click)="switchToForggotPassword()" class="neumorphicLink" matRipple><span>Esqueci minha senha</span></a>
             </div>
 
 
         </form>
     </div>
+
+    <div @switchAnimation class="dock" *ngIf="newAccount && !forggotPassword && !accountReset">
+        <form [formGroup]="signUpForm" class="grid grid-cols gap-8">
+            <div class="col-span-1">
+                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                    <input matInput placeholder="Nome Completo" value="" formControlName="name">
+                </mat-form-field>
+            </div>
+
+            <div class="col-span-1">
+                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                    <input matInput placeholder="E-mail" value="" formControlName="email">
+                </mat-form-field>
+            </div>
+
+            <div class="col-span-1">
+                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                    <input matInput placeholder="Senha" value="" formControlName="password">
+                </mat-form-field>
+            </div>
+
+            <div class="col-span-1">
+                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                    <input matInput placeholder="Repita a senha" value="" formControlName="confirmPassword">
+                </mat-form-field>
+            </div>
+
+            <div class="col-span-1">
+                <button type="button" class="neumorphicButton bg-yellow-400 color-blend full rounded"
+                    [ngClass]="{'disabled': signUpForm.invalid}">
+                    <span class="text-over-color">SignUp</span>
+                </button>
+            </div>
+
+            <div class="col-span-1">
+                <button (click)="switchToSignIn()" type="button"
+                    class="neumorphicButton bg-[var(--mat-sys-background)] full rounded">
+                    <span class="text">Login</span>
+                </button>
+            </div>
+
+
+
+
+        </form>
+    </div>
+
+    <div @switchAnimation class="dock" *ngIf="!newAccount && forggotPassword && !accountReset">
+        <form class="grid grid-cols gap-8" [formGroup]="forggotPasswordForm">
+            <div class="col-span-1">
+                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                    <input matInput formControlName="email" placeholder="E-mail" value="">
+                </mat-form-field>
+            </div>
+
+            <div class="col-span-1">
+                <button type="button" class="neumorphicButton bg-yellow-400 color-blend full rounded"
+                    [ngClass]="{'disabled': forggotPasswordForm.invalid}">
+                    <span class="text-over-color">Enviar</span>
+                </button>
+            </div>
+
+            <div class="col-span-1">
+                <button (click)="switchToSignIn()" type="button"
+                    class="neumorphicButton bg-[var(--mat-sys-background)] full rounded">
+                    <span class="text">Cancelar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
 
 </div>

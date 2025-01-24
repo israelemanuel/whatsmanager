@@ -9,6 +9,7 @@ const routes: Routes = [
         component: AuthComponent,
         children: [
             { path: 'login', loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent) },
+            { path: 'passwordReset', loadComponent: () => import('./pages/password-reset/password-reset.component').then(m => m.PasswordResetComponent) },
 
             { path: '', pathMatch: 'full', redirectTo: 'login' },
         ]

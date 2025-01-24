@@ -121,4 +121,17 @@
     padding: 32px;
     border-radius: 32px;
     box-shadow:var(--big-shadow-card);
+    animation: enter .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards
+}
+
+@keyframes enter {
+    from {
+        transform: translateY(10%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

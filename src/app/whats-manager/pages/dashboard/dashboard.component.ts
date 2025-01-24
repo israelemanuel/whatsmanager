@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import apps from './options';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         MatRippleModule,
+        RouterLink
     ],
     standalone: true,
     templateUrl: './dashboard.component.html',
