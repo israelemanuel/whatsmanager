@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path: 'admin',
         loadChildren: () => import('./whats-manager/whats-manager.module').then(m => m.WhatsManagerModule)
-    }
+    },
+    {
+        path: 'egovbuilder',
+        loadChildren: () => import('./egovbuilder/egovbuilder.module').then(m => m.EgovbuilderModule)
+      }
 ];
