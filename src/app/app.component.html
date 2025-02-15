@@ -1,9 +1,1 @@
-<div class="relative h-full w-full box-border flex flex-col bg-[var(--mat-sys-background)]">
-    <div class="w-full h-[64px] flex flex-row justify-center items-center">
-        <mat-slide-toggle class="relative z-50" (change)="onThemeChange($event)"></mat-slide-toggle>
-    </div>
-    <div class="w-full h-full relative" style="max-height: calc(100% - 64px);">
-        <router-outlet></router-outlet>
-    </div>
-
-</div>
+<router-outlet></router-outlet>

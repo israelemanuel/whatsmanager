@@ -1,0 +1,6 @@
+.inner-body{
+    @apply relative w-full h-full box-border;
+
+    max-height: calc(100dvh - 64px);
+
+}

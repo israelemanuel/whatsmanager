@@ -3,19 +3,19 @@ app-webhooks {
     .dock {
         --main-curve: 16px;
 
-
         background-color: var(--mat-sys-background);
         padding: 32px 0px;
         border-radius: 32px;
         box-shadow: var(--big-shadow-card);
         font-family: 'Nunito', sans-serif;
+        animation: enter .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+        opacity: 0;
 
         .title {
             position: relative;
             font-size: 1.4rem;
             padding: 0px 32px;
         }
-
     }
 
     .webhooks-list {
@@ -33,7 +33,6 @@ app-webhooks {
 
         &::-webkit-scrollbar {
             width: 16px;
-
         }
 
         &::-webkit-scrollbar-track {
@@ -55,7 +54,7 @@ app-webhooks {
         }
 
         .webhook-list-item {
-            @media(max-width: 767px){
+            @media(max-width: 767px) {
                 border: 1px solid var(--main-background);
                 background: var(--main-background);
                 box-shadow: var(--main-shadow), var(--main-inset-shadow);
@@ -73,7 +72,7 @@ app-webhooks {
                     font-weight: bold;
                 }
 
-                @media(max-width: 767px){
+                @media(max-width: 767px) {
                     .content-title {
                         font-size: 1.2rem;
                     }
@@ -86,22 +85,13 @@ app-webhooks {
             }
         }
     }
-
 }
 
-
 .dialog-reset {
-
-
     --main-curve: 16px;
-
     animation: up .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 
-
-
-
     .fake-qr-code {
-
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -116,5 +106,17 @@ app-webhooks {
         to {
             transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
         }
+    }
+}
+
+@keyframes enter {
+    from {
+        transform: translateY(10%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

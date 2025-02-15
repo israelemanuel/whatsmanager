@@ -1,11 +1,16 @@
-<div class="relative w-full h-full overflow-hidden flex flex-col items-center justify-center p-6 box-border">
+<div class="relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-center p-6 box-border"
+    style="max-height: calc(100dvh - 64px);">
 
     <div class="w-full h-full flex items-center justify-center">
         <div class="dock w-full h-full md:max-w-[60dvw] box-border flex flex-col justify-between gap-4">
             <div class="flex flex-col gap-4 relative h-full overflow-hidden">
                 <div class="flex flex-row gap-4 items-center title">
-                    <button [routerLink]="['/admin']" class="aspect-square w-[40px] rounded-full flex flex-row items-center justify-center border-none" marRipple>
-                        <mat-icon>arrow_back</mat-icon>
+                    <button [routerLink]="['/admin']"
+                        class="aspect-square w-[40px] rounded-full flex flex-row items-center justify-center border-none"
+                        marRipple>
+                        <span class="material-symbols-rounded">
+                            arrow_back
+                        </span>
                     </button>
                     <div class="neumorphicText">
                         <span>Lista de Conexões</span>
@@ -18,7 +23,9 @@
                         <div class="list-item" [ngClass]="{'active': item.ativo}">
                             <div class="flex flex-row gap-4">
                                 <div class="icon">
-                                    <mat-icon>wifi</mat-icon>
+                                    <span class="material-symbols-rounded">
+                                        wifi
+                                    </span>
                                 </div>
                                 <div class="info">
                                     <span class="name">{{ item.name }}</span>
@@ -26,9 +33,11 @@
                             </div>
                             <div class="flex items-center gap-4">
 
-                                <button class="neumorphicButtonIcon flat" (click)="removeWhatsappDialog(item)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
+                                <div class="neumorphicButtonIcon flat" (click)="removeWhatsappDialog(item)">
+                                    <span style="color: var(--neumorphic-color)">
+                                        <span class="material-symbols-rounded icon">delete</span>
+                                    </span>
+                                </div>
 
                                 <div class="neumorphicButton" [ngClass]="{'whatsapp': item.ativo}"
                                     (click)="connectWhatsappDialog(item)">

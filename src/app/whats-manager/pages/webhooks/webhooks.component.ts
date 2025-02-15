@@ -7,6 +7,7 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-webhooks',
@@ -17,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatRippleModule,
         MatDialogModule,
         MatIconModule,
+        RouterLink
     ],
     templateUrl: './webhooks.component.html',
     styleUrl: './webhooks.component.scss',

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatRippleModule } from '@angular/material/core';
 import apps from './options';
-import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { MainNavBarComponent } from '../core/main-nav-bar/main-nav-bar.component';
 
 @Component({
     selector: 'app-dashboard',
@@ -11,15 +12,14 @@ import { RouterLink } from '@angular/router';
         CommonModule,
         FormsModule,
         MatRippleModule,
-        RouterLink
+        RouterLink,
+        MainNavBarComponent
     ],
-    standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
 
     public appList = apps;
-    public sidebar : boolean = false;
 
 }

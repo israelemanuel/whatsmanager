@@ -5,29 +5,25 @@ import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/sl
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    MatSlideToggleModule,
-    MatIcon
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        MatSlideToggleModule,
+        MatIcon
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'whatsManager';
+    title = 'whatsManager';
 
 
 
-  constructor() {
+    constructor() {
 
-  }
+    }
 
-  onThemeChange(event: MatSlideToggleChange) {
-    const page = document.body;
 
-    page.classList.toggle('dark');
-}
 }

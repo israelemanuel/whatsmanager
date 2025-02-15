@@ -1,46 +1,88 @@
-<div class="relative w-full h-[64px] flex flex-row justify-between px-2 box-border max-w-[100dvw] items-center">
+<div class="nav-bar relative w-[100dvw] h-[64px] flex flex-row justify-between px-2 box-border items-center z-10">
 
     <div class="hidden md:flex flex-row gap-4 items-center">
-        <div class="font-bold" style="font-size: 1.2rem">eGovBuilder</div>
+        <ng-container *ngIf="!isMobile">
+            <div class="font-bold" style="font-size: 1.2rem; color: var(--mat-sys-on-background)">Painel do
+                Administrador</div>
+        </ng-container>
 
-        <div class="hidden xl:flex flex-row gap-4" style="font-size: 1.0rem;">
-            <span>Painel</span>
-            <span>Publicação</span>
-            <span>Novidades</span>
-            <span>Guias</span>
+        <div class="hidden xl:flex flex-row gap-2" style="font-size: 1.0rem;">
+            <ng-container *ngFor="let item of menuItems">
+                <span class="neumorphicButton small flat">
+                    <span class="text">{{item.label}}</span>
+                </span>
+            </ng-container>
         </div>
 
         <div class="flex xl:hidden flex-row gap-4 ">
 
-            <button mat-flat-button>
-                <span>Painel</span>
-            </button>
+            <div class="neumorphicButton small">
+                <span class="flex flex-row items-center text">
+                    <span>Painel</span>
+                    <span class="material-symbols-rounded">
+                        arrow_drop_down
+                    </span>
+                </span>
+            </div>
         </div>
     </div>
 
     <div class="flex md:hidden flex-row gap-4 ">
-        <button class="h-[48px] w-[48px] aspect-square rounded-full border-none">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-
-
-
-    <div class="absolute top-0 left-0 right-0 h-full">
-        <div class="w-full h-full flex flex-row justify-center items-center">
-            <span>Home</span>
+        <div class="neumorphicButtonIcon flat" (click)="toggleMenu = !toggleMenu">
+            <span class="material-symbols-rounded">
+                menu
+            </span>
         </div>
     </div>
 
+    <ng-container *ngIf="isMobile">
+        <div class="absolute top-0 left-0 right-0 h-full select-none pointer-events-none">
+            <div class="w-full h-full flex flex-row justify-center items-center">
+                <span class="font-bold" style="color: var(--mat-sys-on-background);">Home</span>
+            </div>
+        </div>
+    </ng-container>
 
-    <div class="msc flex flex-row gap-4 items-center">
-        <div class="w-[40px] aspect-square rounded-full bg-red-500">
+    <div class="flex flex-row gap-4 items-center">
+        <ng-container *ngIf="!isMobile">
+            <mat-slide-toggle [checked]="isDarkTheme" class="relative z-50"
+                (change)="onThemeChange($event)"></mat-slide-toggle>
+        </ng-container>
 
+        <div class="w-[40px] aspect-square rounded-full bg-red-500"></div>
+
+        <div class="neumorphicButtonIcon flat" (click)="toggleNotification = !toggleNotification">
+            <span class="material-symbols-rounded">
+                notifications
+            </span>
         </div>
 
-        <button mat-icon-button>
-            <mat-icon>notifications</mat-icon>
-        </button>
+
     </div>
 
 </div>
+
+<ng-container *ngIf="isMobile">
+    <div class="sidenav" [ngClass]="{'show': toggleMenu}">
+        <div class="sidenav-content">
+            <div class="flex flex-col gap-2 w-full">
+                <ng-container *ngFor="let item of menuItems">
+                    <span class="menu-item" matRipple>{{item.label}}</span>
+                </ng-container>
+            </div>
+
+            <div class="flex w-full rounded-xl items-center justify-center h-[48px]">
+                <mat-slide-toggle [checked]="isDarkTheme" class="relative z-50"
+                    (change)="onThemeChange($event)"></mat-slide-toggle>
+            </div>
+        </div>
+    </div>
+
+    <div class="backdrop" (click)="toggleMenu = !toggleMenu" *ngIf="toggleMenu"></div>
+</ng-container>
+
+<div class="notification" [ngClass]="{'show': toggleNotification}">
+
+</div>
+
+<div class="backdrop" (click)="toggleNotification = !toggleNotification" *ngIf="toggleNotification"></div>
