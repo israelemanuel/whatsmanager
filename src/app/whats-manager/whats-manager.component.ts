@@ -11,7 +11,6 @@ import { MainNavBarComponent } from '../core/main-nav-bar/main-nav-bar.component
   standalone: true,
   imports: [RouterOutlet,
     MatSlideToggleModule,
-    RouterLink,
     MainNavBarComponent
   ]
 })

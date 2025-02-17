@@ -45,6 +45,12 @@
         text-transform: none;
     }
 
+    &.tiny{
+        height: 32px;
+        font-size: 1.0rem;
+        text-transform: none;
+    }
+
     &:active{
         .text{
             transform:scale(0.98)

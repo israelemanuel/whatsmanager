@@ -11,7 +11,6 @@ import { RouterOutlet } from '@angular/router';
         CommonModule,
         RouterOutlet,
         MatSlideToggleModule,
-        MatIcon
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

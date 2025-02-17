@@ -1,0 +1,35 @@
+.welcome-header{
+    @apply w-full rounded-3xl flex flex-row items-center justify-between;
+    transform: scaleY(1);
+    min-height: calc(32px + (2 * 1rem));
+    padding: 1rem;
+    transform-origin: top;
+    transition: var(--main-transition);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+
+
+
+
+    &.reduce{
+        height: 0px;
+        min-height: 0px;
+        padding: 0rem;
+        transform: scaleY(0);
+        margin-bottom: 0;
+    }
+}
+
+@media(max-width: 768px){
+
+    .welcome-header{
+        min-height: calc(56px + (2 * 1rem));
+    }
+}
+
+.webpage-list{
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}

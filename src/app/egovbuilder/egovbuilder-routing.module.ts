@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EgovbuilderComponent } from './egovbuilder.component';
-import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
     {
         path: '',
         component: EgovbuilderComponent,
         children: [
-            { path: 'home', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) },
-            { path: '', pathMatch: 'full', redirectTo: 'home' },
+            { path: 'webpage-list', loadComponent: () => import('./pages/webpage-list/webpage-list.component').then(m => m.WebpageListComponent) },
+            { path: 'webpage-preview', loadComponent: () => import('./pages/webpage-preview/webpage-preview.component').then(m => m.WebpagePreviewComponent) },
+            { path: 'webpage-edit', loadComponent: () => import('./pages/webpage-edit/webpage-edit.component').then(m => m.WebpageEditComponent) },
+            { path: '', pathMatch: 'full', redirectTo: 'webpage-list' },
 
         ]
     },
