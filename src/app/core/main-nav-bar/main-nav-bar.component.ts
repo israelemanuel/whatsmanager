@@ -32,8 +32,8 @@ export class MainNavBarComponent implements OnInit {
     public menuItems = [
 
         { label: 'Home', url: '/admin' },
-        { label: 'Sites', url: '/pagebuilder/website-list' },
-        { label: 'Páginas', url: '/pagebuilder/webpage-list' },
+        { label: 'Sites', url: '/pagebuilder/website/website-list' },
+        { label: 'Páginas', url: '/pagebuilder/webpage/webpage-list' },
         { label: 'Blog' },
         { label: 'News' },
         { label: 'Ajuda' },

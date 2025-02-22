@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise } from '../../../core-animations';
+import { popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise } from '../../../../../core-animations';
 @Component({
     selector: 'app-webpage-list',
     imports: [

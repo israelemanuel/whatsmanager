@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EgovbuilderComponent } from './egovbuilder.component';
+import { WebpageComponent } from './webpage.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: EgovbuilderComponent,
+        component: WebpageComponent,
         children: [
 
 
-            { path: 'webpage', loadChildren: () => import('./pages/webpage/webpage.module').then(m => m.WebpageModule) },
-            { path: 'website', loadChildren: () => import('./pages/website/website.module').then(m => m.WebsiteModule) },
+            { path: 'webpage-list', loadComponent: () => import('./pages/webpage-list/webpage-list.component').then(m => m.WebpageListComponent) },
+            // { path: 'website', loadChildren: () => import('./pages/website/website.module').then(m => m.WebsiteModule) },;
             // { path: 'webpage-preview', loadComponent: () => import('./pages/webpage-preview/webpage-preview.component').then(m => m.WebpagePreviewComponent) },
             // { path: 'webpage-edit', loadComponent: () => import('./pages/webpage-edit/webpage-edit.component').then(m => m.WebpageEditComponent) },
-            { path: '', pathMatch: 'full', redirectTo: 'website' },
+            { path: '', pathMatch: 'full', redirectTo: 'webpage-list' },
 
         ]
     },
@@ -23,4 +23,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class eGovBuilderRoutingModule { }
+export class webPageRoutingModule { }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebpagePainelComponent } from './webpage-painel.component';
+import { BlogPostComponent } from './blog-post.component';
 
-describe('WebpagePainelComponent', () => {
-  let component: WebpagePainelComponent;
-  let fixture: ComponentFixture<WebpagePainelComponent>;
+describe('BlogPostComponent', () => {
+  let component: BlogPostComponent;
+  let fixture: ComponentFixture<BlogPostComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WebpagePainelComponent]
+      imports: [BlogPostComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WebpagePainelComponent);
+    fixture = TestBed.createComponent(BlogPostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
