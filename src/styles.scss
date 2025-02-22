@@ -15,16 +15,17 @@ html {
         ));
 
     --mat-sys-background: #ededed;
-
-    --main-shadow: 5px 5px 5px hsl(0, 0%, 86%), -5px -5px 5px hsl(0, 0%, 96%);
-    --main-inset-shadow: inset 5px 5px 5px hsl(0, 0%, 86%), inset -5px -5px 5px hsl(0, 0%, 96%);
-    --big-shadow-card: 41px 41px 82px hsl(0, 0%, 86%), -41px -41px 82px hsl(0, 0%, 100%);
+    --mat-sys-shadow-bright: hsl(0, 0%, 96%);
+    --mat-sys-shadow-dark: hsl(0, 0%, 86%);
     --neumorphic-color: #8c8c8c;
     --neumorphic-color-invert: #e3e3e3;
     --text-shadow: 0px 2px 2px #fff, 0 0 0 #515151, 0px 2px 2px #fff;
-    --convex-shadow: linear-gradient(130deg, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 86%) 100%);
-    --concave-shadow: linear-gradient(130deg, hsl(0, 0%, 86%) 0%, hsl(0, 0%, 96%) 100%);
 
+    --main-shadow: 5px 5px 5px var(--mat-sys-shadow-dark), -5px -5px 5px var(--mat-sys-shadow-bright);
+    --main-inset-shadow: inset 5px 5px 5px var(--mat-sys-shadow-dark), inset -5px -5px 5px var(--mat-sys-shadow-bright);
+    --big-shadow-card: 41px 41px 82px var(--mat-sys-shadow-dark), -41px -41px 82px var(--mat-sys-shadow-bright);
+    --convex-shadow: linear-gradient(130deg, var(--mat-sys-shadow-bright) 0%, var(--mat-sys-shadow-dark) 100%);
+    --concave-shadow: linear-gradient(130deg, var(--mat-sys-shadow-dark) 0%, var(--mat-sys-shadow-bright) 100%);
     --disabled-degrade: var(--mat-sys-background);
 }
 
@@ -39,17 +40,19 @@ html {
             density: 0,
         ));
 
+
     --mat-sys-background: #1d1d1d;
-    --main-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #121212;
-    --main-inset-shadow: inset 5px 5px 5px #0f0f0f, inset -5px -5px 5px #121212;
-    --big-shadow-card: 41px 48px 64px #0f0f0f, -48px -48px 64px #121212;
+    --mat-sys-shadow-bright: hsl(0, 0%, 7%);
+    --mat-sys-shadow-dark: hsl(0, 0%, 6%);
     --neumorphic-color: rgb(135, 135, 135);
     --neumorphic-color-invert: rgb(35, 35, 35);
     --text-shadow: 0px 2px 2px #0f0f0f, 0 0 0 #000000, 0px 2px 2px #121212;
 
-    --convex-shadow: linear-gradient(130deg, #0f0f0f 0%, #121212 100%);
-    --concave-shadow: linear-gradient(130deg, #121212 0%, #0f0f0f 100%);
-
+    --main-shadow: 5px 5px 5px var(--mat-sys-shadow-dark), -5px -5px 5px var(--mat-sys-shadow-bright);
+    --main-inset-shadow: inset 5px 5px 5px var(--mat-sys-shadow-dark), inset -5px -5px 5px var(--mat-sys-shadow-bright);
+    --big-shadow-card: 41px 41px 82px var(--mat-sys-shadow-dark), -41px -41px 82px var(--mat-sys-shadow-bright);
+    --convex-shadow: linear-gradient(130deg, var(--mat-sys-shadow-bright) 0%, var(--mat-sys-shadow-dark) 100%);
+    --concave-shadow: linear-gradient(130deg, var(--mat-sys-shadow-dark) 0%, var(--mat-sys-shadow-bright) 100%);
     --disabled-degrade: var(--mat-sys-background);
 
 

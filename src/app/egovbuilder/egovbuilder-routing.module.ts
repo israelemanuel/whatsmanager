@@ -10,6 +10,10 @@ const routes: Routes = [
             { path: 'webpage-list', loadComponent: () => import('./pages/webpage-list/webpage-list.component').then(m => m.WebpageListComponent) },
             { path: 'webpage-preview', loadComponent: () => import('./pages/webpage-preview/webpage-preview.component').then(m => m.WebpagePreviewComponent) },
             { path: 'webpage-edit', loadComponent: () => import('./pages/webpage-edit/webpage-edit.component').then(m => m.WebpageEditComponent) },
+
+            { path: 'website-list', loadComponent: () => import('./pages/website-list/website-list.component').then(m => m.WebsiteListComponent) },
+            // { path: 'webpage-preview', loadComponent: () => import('./pages/webpage-preview/webpage-preview.component').then(m => m.WebpagePreviewComponent) },
+            // { path: 'webpage-edit', loadComponent: () => import('./pages/webpage-edit/webpage-edit.component').then(m => m.WebpageEditComponent) },
             { path: '', pathMatch: 'full', redirectTo: 'webpage-list' },
 
         ]

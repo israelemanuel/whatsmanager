@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
     selector: 'app-main-nav-bar',
@@ -12,7 +13,9 @@ import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/sl
         MatIconModule,
         MatButtonModule,
         MatRippleModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        RouterLink,
+        RouterLinkActive
     ],
     templateUrl: './main-nav-bar.component.html',
     styleUrl: './main-nav-bar.component.scss',
@@ -28,8 +31,11 @@ export class MainNavBarComponent implements OnInit {
 
     public menuItems = [
 
-        { label: 'Todos os Sites' },
-        { label: 'Recursos' },
+        { label: 'Home', url: '/admin' },
+        { label: 'Sites', url: '/pagebuilder/website-list' },
+        { label: 'Páginas', url: '/pagebuilder/webpage-list' },
+        { label: 'Blog' },
+        { label: 'News' },
         { label: 'Ajuda' },
 
     ]

@@ -5,6 +5,7 @@ import { MatRippleModule } from '@angular/material/core';
 import apps from './options';
 import { RouterLink } from '@angular/router';
 import { MainNavBarComponent } from '../core/main-nav-bar/main-nav-bar.component';
+import { popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise } from '../core-animations';
 
 @Component({
     selector: 'app-dashboard',
@@ -16,7 +17,8 @@ import { MainNavBarComponent } from '../core/main-nav-bar/main-nav-bar.component
         MainNavBarComponent
     ],
     templateUrl: './dashboard.component.html',
-    styleUrl: './dashboard.component.scss'
+    styleUrl: './dashboard.component.scss',
+    animations: [popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise ]
 })
 export class DashboardComponent {
 

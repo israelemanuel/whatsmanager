@@ -18,11 +18,11 @@ import { RouterLink } from '@angular/router';
         MatRippleModule,
         MatDialogModule,
         MatIconModule,
-        RouterLink
+        RouterLink,
     ],
     templateUrl: './webhooks.component.html',
     styleUrl: './webhooks.component.scss',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class WebhooksComponent implements OnInit {
 

@@ -81,8 +81,23 @@
             box-sizing: border-box;
             font-size: 1.0rem;
             color: var(--mat-sys-on-background);
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--neumorphic-color-invert);
 
-            &:before {
+
+            &.router-link-active {
+                &:after {
+                    background: var(--mat-sys-background);
+                    opacity: 1 !important;
+                }
+
+            }
+
+
+            &:after {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -92,6 +107,8 @@
                 background: var(--convex-shadow);
                 content: '';
                 opacity: 0.2;
+                z-index: -1;
+
             }
         }
     }
