@@ -51,7 +51,7 @@
 
     <div class="flex flex-row gap-4 items-center">
 
-        <div class="w-[40px] aspect-square rounded-full bg-red-500"></div>
+        <div (click)="toggleUserMenu = !toggleUserMenu" class="w-[40px] aspect-square rounded-full bg-red-500"></div>
 
         <div class="neumorphicButtonIcon flat" (click)="toggleNotification = !toggleNotification">
             <span class="material-symbols-rounded">
@@ -83,8 +83,27 @@
 
 <div class="backdrop" (click)="toggleMenu = !toggleMenu" *ngIf="toggleMenu"></div>
 
-<div class="notification" [ngClass]="{'show': toggleNotification}">
-
-</div>
+<div class="notification" [ngClass]="{'show': toggleNotification}"></div>
 
 <div class="backdrop" (click)="toggleNotification = !toggleNotification" *ngIf="toggleNotification"></div>
+
+<div class="user-menu" [ngClass]="{'show': toggleUserMenu}">
+    <div class="h-full flex flex-col justify-between">
+        <div class="flex flex-col">
+            <div class="menu-item">
+                <span class="font-bold">Meu Perfil</span>
+                <span>
+                    <span class="material-symbols-rounded">
+                        chevron_right
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="menu-item danger">
+            <span class="font-bold">Sair</span>
+        </div>
+    </div>
+</div>
+
+<div class="backdrop" (click)="toggleUserMenu = !toggleUserMenu" *ngIf="toggleUserMenu"></div>

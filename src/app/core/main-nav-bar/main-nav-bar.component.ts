@@ -28,6 +28,7 @@ export class MainNavBarComponent implements OnInit {
     public toggleMenu: boolean = false;
     public toggleNotification: boolean = false;
     public isDarkTheme: boolean = false; // Adiciona esta linha
+    public toggleUserMenu: boolean = false;
 
     public menuItems = [
 

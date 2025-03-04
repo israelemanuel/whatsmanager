@@ -1,3 +1,10 @@
+@function hex-to-rgb($hex) {
+    $hex: str-slice($hex, 2); // Remove o caractere '#'
+    @return (red: str-slice($hex, 1, 2),
+        green: str-slice($hex, 3, 4),
+        blue: str-slice($hex, 5, 6));
+}
+
 .nav-bar {
     position: relative;
 
@@ -156,6 +163,100 @@
     }
 }
 
+
+
+.user-menu {
+
+    position: fixed;
+    top: calc(1rem + 64px);
+    right: 0.8rem;
+    height: 250px;
+    width: 270px;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--neumorphic-color-invert);
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+
+
+    &.show {
+        pointer-events: all;
+        animation: slideDown .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--mat-sys-background);
+        opacity: 0.4;
+    }
+
+    .menu-item {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 56px;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        font-size: 1.0rem;
+        color: var(--mat-sys-on-background);
+        cursor: pointer;
+        user-select: none;
+        text-decoration: none;
+        font-weight: bold;
+        border: 1px solid var(--neumorphic-color-invert);
+        transition: var(--main-transition);
+
+        &.danger {
+            background-color: #ba1a1a4f;
+            color: var(--mat-sys-error);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:hover {
+            background: var(--mat-sys-background);
+        }
+
+        &.router-link-active {
+            &:after {
+                background: var(--mat-sys-background);
+                opacity: 1 !important;
+            }
+
+        }
+
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1rem;
+            background: var(--convex-shadow);
+            content: '';
+            opacity: 0.2;
+            z-index: -1;
+
+        }
+    }
+
+}
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -180,5 +281,18 @@
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+
+
+@keyframes slideDown{
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
