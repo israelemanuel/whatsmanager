@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebpagePreviewComponent } from './webpage-preview.component';
+import { WebpageCreateComponent } from './webpage-create.component';
 
-describe('WebpagePreviewComponent', () => {
-  let component: WebpagePreviewComponent;
-  let fixture: ComponentFixture<WebpagePreviewComponent>;
+describe('WebpageCreateComponent', () => {
+  let component: WebpageCreateComponent;
+  let fixture: ComponentFixture<WebpageCreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WebpagePreviewComponent]
+      imports: [WebpageCreateComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WebpagePreviewComponent);
+    fixture = TestBed.createComponent(WebpageCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,44 +1,46 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise } from '../../../../../core-animations';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { FormsModule, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-    selector: 'app-website-list',
+    selector: 'app-webpage-create',
     imports: [
         CommonModule,
+        OverlayModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
         MatButtonModule,
-        MatTooltipModule,
-        RouterLink,
-        RouterLinkActive
+        MatMenuModule,
     ],
-    templateUrl: './website-list.component.html',
-    styleUrl: './website-list.component.scss',
-    animations: [popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise ]
+    templateUrl: './webpage-create.component.html',
+    styleUrl: './webpage-create.component.scss',
 
 })
-export class WebsiteListComponent {
+export class WebpageCreateComponent {
     @ViewChild('ListWebpagesBody') ListWebpagesBody: ElementRef | any;
     @ViewChild('pageHeader') pageHeader: ElementRef | any;
 
     public isMobile: boolean = false;
     public isScrolled: boolean = false;
-    public headerHeight: number = 0;
 
-    public lstWebpages: any[] = [
-        {
-            title: 'PM Santo Antônio do Taua',
-            url: 'http://localhost:3000',
-            internUrl: '/pagebuilder/webpages/webpages-list',
-            icon: 'home',
-            active: true,
-            published: true,
-            thumbnail: 'assets/images/thumbnail/image.png'
-        },
+    public formWebPageCreate = new UntypedFormGroup({
+        title: new UntypedFormControl(null, Validators.required),
+        description: new UntypedFormControl(null,),
+        content: new UntypedFormControl(null),
+        cover: new UntypedFormControl(null),
+        status: new UntypedFormControl(null),
+        link: new UntypedFormControl(null),
+    })
 
-    ];
+
 
     constructor() { }
 
@@ -73,9 +75,10 @@ export class WebsiteListComponent {
     }
 
 
+
+
     @HostListener('window:resize', ['$event'])
     onResize(event: any) {
         this.checkIfMobile();
-        this.reduceWhenStartScroll();
     }
 }

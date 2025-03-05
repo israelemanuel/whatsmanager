@@ -4,7 +4,7 @@
 
         <div #pageHeader class="welcome-header" [ngClass]="{'reduce': isScrolled}"
             style="box-shadow: var(--main-shadow);">
-            <div class="flex flex-row gap-4">
+            <div class="flex flex-row gap-4 items-center">
                 <span class="font-bold text-[var(--neumorphic-color)]" style="font-size: 1.0rem;">
                     Bem Vindo, <span class="text-primary">Usuário</span>
                 </span>
@@ -56,15 +56,25 @@
                             style="box-shadow: var(--main-shadow);">
 
                             <div class="flex flex-col w-full flex-1">
-                                <div class="thumb" style="background-image: url('{{item.thumbnail}}');"></div>
+                                <div class="thumb" style="background-image: url('{{item.thumbnail}}');">
+                                    <div class="absolute top-4 right-4 bg-white rounded-full">
+                                        <button mat-icon-button matTooltip="Opções">
+                                            <span aria-hidden="true" class="material-symbols-rounded text-[var(--neumorphic-color)]">
+                                                more_vert
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                </div>
                                 <div class="px-4 pt-4 flex flex-col gap-2 text-[var(--neumorphic-color)] font-bold">
                                     <span class="w-full flex justify-between items-center">
                                         <span>Título</span>
                                         <span>{{item.title}}</span>
                                     </span>
-                                    <span class="w-full flex justify-between items-center">
+                                    <span class="w-full flex justify-between items-center gap-4 line-clamp-1">
                                         <span>Link:</span>
-                                        <span>{{item.url}}</span>
+                                        <span class="max-w-[60%] line-clamp-1">{{item.url}}</span>
+
                                     </span>
                                     <ng-container *ngIf="item.published">
                                         <span class="w-full flex items-center justify-between">
@@ -80,10 +90,10 @@
                             </div>
 
                             <div class="w-full flex flex-row gap-4 p-4 box-border">
-                                <div class="neumorphicButton small flat" style="flex: 1"><span
-                                        class="text">Editar</span></div>
-                                <div class="neumorphicButton small flat" style="flex: 1"><span
-                                        class="text">Visitar</span></div>
+                                <button type="button" [routerLink]="item.internUrl" class="neumorphicButton small flat" style="flex: 1"><span
+                                        class="text">Selecionar</span></button>
+                                <a [href]="item.url" target="_blank" type="button" class="neumorphicButton small flat" style="flex: 1"><span
+                                        class="text">Visualizar</span></a>
                             </div>
 
                         </div>

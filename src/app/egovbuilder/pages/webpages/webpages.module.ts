@@ -5,10 +5,10 @@ import { webPageRoutingModule } from './webpage-routing.module';
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    webPageRoutingModule
-  ]
+    declarations: [],
+    imports: [
+        CommonModule,
+        webPageRoutingModule
+    ]
 })
-export class WebpageModule { }
+export class WebpagesModule { }

@@ -1,18 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise } from '../../../../../core-animations';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 @Component({
-    selector: 'app-webpage-list',
+    selector: 'app-webpages-list',
     imports: [
         CommonModule,
-
-
+        OverlayModule,
+        RouterLink,
+        RouterLinkActive
     ],
-    templateUrl: './webpage-list.component.html',
-    styleUrl: './webpage-list.component.scss',
-    animations: [popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise ]
+    templateUrl: './webpages-list.component.html',
+    styleUrl: './webpages-list.component.scss',
+    animations: [popUp, popDown, slideLeft, slideRight, spinClockWise, spinCounterClockWise]
 })
-export class WebpageListComponent {
+export class WebpagesListComponent {
 
     @ViewChild('ListWebpagesBody') ListWebpagesBody: ElementRef | any;
     @ViewChild('pageHeader') pageHeader: ElementRef | any;
@@ -20,6 +24,7 @@ export class WebpageListComponent {
     public isMobile: boolean = false;
     public isScrolled: boolean = false;
     public headerHeight: number = 0;
+    public subMenuOverlay: boolean = false;
 
     public lstWebpages: any[] = [
         {
@@ -115,6 +120,12 @@ export class WebpageListComponent {
         //     active: false
         // }
     ];
+
+    public lstSubMenuItems: any[] = [
+        { label: 'Páginas', url: '/pagebuilder/website/website-pages-list' },
+        { label: 'Categorias', url: '/pagebuilder/website/website-blog' },
+        { label: 'Blog', url: '/pagebuilder/website/website-blog-category' },
+    ]
 
     constructor() { }
 

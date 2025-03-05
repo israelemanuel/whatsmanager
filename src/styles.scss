@@ -144,6 +144,10 @@ body {
     min-height: 64px !important;
 }
 
+.mat-mdc-menu-panel{
+    border-radius: 1rem !important;
+}
+
 
 @import '../public/scss/neumorphicInputs.scss';
 @import '../public/scss/neumorphicButtons.scss';

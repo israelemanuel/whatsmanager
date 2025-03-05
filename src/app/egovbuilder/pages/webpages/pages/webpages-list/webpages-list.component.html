@@ -1,17 +1,38 @@
-<div class="w-full h-full box-border overflow-hidden" #viewBody>
+<div class="relative w-full h-full box-border overflow-hidden" #viewBody>
+
+    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="subMenuOverlay"
+        (detach)="subMenuOverlay = false">
+        <div class="subMenu" [ngClass]="{'show': subMenuOverlay}">
+            <ng-container *ngFor="let item of lstSubMenuItems">
+                <div class="menu-item" [routerLink]="item.url" (click)="subMenuOverlay = !subMenuOverlay">
+                    <span>{{item.label}}</span>
+                </div>
+            </ng-container>
+
+        </div>
+
+        <div class="fixed bg-red w-full h-full top-0 left-0" (click)="subMenuOverlay = !subMenuOverlay"></div>
+    </ng-template>
+
     <div class="w-full h-full flex flex-col overflow-hidden p-4 box-border">
 
 
         <div #pageHeader class="welcome-header" [ngClass]="{'reduce': isScrolled}"
             style="box-shadow: var(--main-shadow);">
-            <div class="flex flex-row gap-4">
+            <div class="flex flex-row gap-4 items-center">
+                <div cdkOverlayOrigin #trigger="cdkOverlayOrigin" class="neumorphicButton tiny"
+                    (click)="subMenuOverlay = !subMenuOverlay">
+                    <span class="material-symbols-rounded">
+                        dock_to_right
+                    </span>
+                </div>
                 <span class="font-bold text-[var(--neumorphic-color)]" style="font-size: 1.0rem;">
-                    Bem Vindo, <span class="text-primary">Usuário</span>
+                    Lista de páginas
                 </span>
             </div>
             <div class="flex flex-row gap-4">
                 <ng-container *ngIf="!isMobile">
-                    <div class="neumorphicButton tiny">
+                    <div class="neumorphicButton tiny" routerLink="/pagebuilder/website/website-pages-create">
                         <span class="text-[var(--neumorphic-color)]">Nova Página</span>
                     </div>
                 </ng-container>
@@ -34,7 +55,7 @@
                 <div class="flex flex-row gap-4">
                     <div class="neumorphicButton small">
                         <div class="flex flex-row items-center text-[var(--neumorphic-color)]">
-                            <span>Todos os Sites</span>
+                            <span>Todas Páginas</span>
                             <span class="material-symbols-rounded">
                                 arrow_drop_down
                             </span>
@@ -62,9 +83,10 @@
                                         <span>Título</span>
                                         <span>{{item.title}}</span>
                                     </span>
-                                    <span class="w-full flex justify-between items-center">
+                                    <span class="w-full flex justify-between items-center gap-2">
                                         <span>Link:</span>
-                                        <span>{{item.url}}</span>
+                                        <div class="line-clamp-1"><span>{{item.url}}</span></div>
+
                                     </span>
                                     <ng-container *ngIf="item.published">
                                         <span class="w-full flex items-center justify-between">
@@ -93,4 +115,6 @@
         </div>
 
     </div>
+
+
 </div>

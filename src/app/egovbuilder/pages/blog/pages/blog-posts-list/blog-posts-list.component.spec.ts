@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebpageEditComponent } from './webpage-edit.component';
+import { BlogPostsListComponent } from './blog-posts-list.component';
 
-describe('WebpageEditComponent', () => {
-  let component: WebpageEditComponent;
-  let fixture: ComponentFixture<WebpageEditComponent>;
+describe('BlogPostsListComponent', () => {
+  let component: BlogPostsListComponent;
+  let fixture: ComponentFixture<BlogPostsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WebpageEditComponent]
+      imports: [BlogPostsListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WebpageEditComponent);
+    fixture = TestBed.createComponent(BlogPostsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
