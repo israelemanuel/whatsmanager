@@ -8,6 +8,7 @@ const routes: Routes = [
         component: WebsiteComponent,
         children: [
             { path: 'website-list', loadComponent: () => import('./pages/website-list/website-list.component').then(m => m.WebsiteListComponent) },
+            { path: 'website-create', loadComponent: () => import('./pages/website-create/website-create.component').then(m => m.WebsiteCreateComponent) },
 
             { path: '', pathMatch: 'full', redirectTo: 'website-list' },
 

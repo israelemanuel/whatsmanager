@@ -4,20 +4,23 @@
 
 @include mat.core();
 @tailwind utilities;
+@import './m3-theme.scss';
 
 html {
+    background-color: var(--mat-sys-background);
+
     @include mat.theme((color: (theme-type: light,
-                primary: mat.$azure-palette,
-                tertiary: mat.$blue-palette,
+                    primary: mat.$green-palette,
+                    tertiary: mat.$yellow-palette,
             ),
             typography: Nunito,
             density: 0,
         ));
 
-    --mat-sys-background: #ededed;
-    --mat-sys-shadow-bright: hsl(0, 0%, 96%);
-    --mat-sys-shadow-dark: hsl(0, 0%, 86%);
-    --neumorphic-color: #8c8c8c;
+
+    --mat-sys-shadow-bright: #f1f1f180;
+    --mat-sys-shadow-dark: #c6c6c680;
+    --neumorphic-color: #5c5c5c;
     --neumorphic-color-invert: #e3e3e3;
     --text-shadow: 0px 2px 2px #fff, 0 0 0 #515151, 0px 2px 2px #fff;
 
@@ -33,17 +36,17 @@ html {
     color-scheme: dark;
 
     @include mat.theme((color: (theme-type: dark,
-                primary: mat.$azure-palette,
-                tertiary: mat.$blue-palette,
+                primary: mat.$green-palette,
+                tertiary: mat.$yellow-palette,
             ),
             typography: Nunito,
             density: 0,
         ));
 
 
-    --mat-sys-background: #1d1d1d;
-    --mat-sys-shadow-bright: hsl(0, 0%, 7%);
-    --mat-sys-shadow-dark: hsl(0, 0%, 6%);
+
+    --mat-sys-shadow-bright: #1f1f1f80;
+    --mat-sys-shadow-dark: #0c0c0c80;
     --neumorphic-color: rgb(135, 135, 135);
     --neumorphic-color-invert: rgb(35, 35, 35);
     --text-shadow: 0px 2px 2px #0f0f0f, 0 0 0 #000000, 0px 2px 2px #121212;
@@ -59,9 +62,10 @@ html {
 }
 
 :root {
-    --main-curve: 32px;
-    --main-padding: 16px;
-    --double-padding: 16px;
+    --main-curve: 1.5rem;
+    --secondary-curve: 1.0rem;
+    --main-padding: 1rem;
+    --double-padding: 1rem;
     --main-transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 

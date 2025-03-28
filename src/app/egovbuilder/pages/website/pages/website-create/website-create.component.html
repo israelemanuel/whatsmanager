@@ -1,148 +1,128 @@
-<!-- <span>titulo da pagina</span>
-
-<span>descricao da pagina</span>
-
-<span>Conteudo da pagina</span>
+<div class="w-full h-full flex justify-center">
+    <div class="relative w-full xl:w-[80dvw] h-full box-border overflow-hidden" #viewBody>
+        <div class="w-full h-full flex flex-col overflow-hidden p-4 box-border">
 
 
-Dados Adicionais
-<span>capa</span>
+            <div #pageHeader class="welcome-header" [ngClass]="{'reduce': isScrolled}"
+                style="box-shadow: var(--main-shadow);">
+                <div class="flex flex-row gap-4 items-center">
+                    <span class="font-bold text-[var(--neumorphic-color)]" style="font-size: 1.0rem;">
+                        Criando nova página
+                    </span>
+                </div>
 
-<span>link alternativo</span>
- -->
+                <div class="flex flex-row gap-4">
+                    <ng-container *ngIf="!isMobile">
+                        <div class="neumorphicButton bg-[#00e923e4] color-blend tiny">
+                            <span class="text-over-color">Salvar</span>
+                        </div>
+                    </ng-container>
 
-
- <div class="relative w-full h-full box-border overflow-hidden" #viewBody>
-
-
-
-    <div class="w-full h-full flex flex-col overflow-hidden p-4 box-border">
-
-
-        <div #pageHeader class="welcome-header" [ngClass]="{'reduce': isScrolled}"
-            style="box-shadow: var(--main-shadow);">
-            <div class="flex flex-row gap-4 items-center">
-                <span class="font-bold text-[var(--neumorphic-color)]" style="font-size: 1.0rem;">
-                    Criando nova página
-                </span>
-            </div>
-
-            <div class="flex flex-row gap-4">
-                <ng-container *ngIf="!isMobile">
-                    <div class="neumorphicButton bg-[#00e923e4] color-blend tiny">
-                        <span class="text-over-color">Salvar</span>
-                    </div>
-                </ng-container>
-
-                <ng-container *ngIf="isMobile">
-                    <div class="neumorphicButtonIcon bg-[#00e923e4] color-blend">
-                        <span class="text-over-color flex items-center justify-center">
-                            <span class="material-symbols-rounded">
-                                save
+                    <ng-container *ngIf="isMobile">
+                        <div class="neumorphicButtonIcon bg-[#00e923e4] color-blend">
+                            <span class="text-over-color flex items-center justify-center">
+                                <span class="material-symbols-rounded">
+                                    save
+                                </span>
                             </span>
-                        </span>
 
-                    </div>
-                </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
             </div>
-        </div>
 
-        <div #listWebpages
-            class="relative w-full h-full rounded-3xl flex flex-col items-center gap-4 p-3 md:p-6 box-border overflow-hidden"
-            style="box-shadow: var(--main-shadow);">
+            <div #listWebpages
+                class="relative w-full h-full rounded-3xl flex flex-col items-center gap-4 p-3 md:p-6 box-border overflow-hidden"
+                style="box-shadow: var(--main-shadow);">
 
-            <div #ListWebpagesBody (onscroll)="reduceWhenStartScroll()"
-                class="webpage-list relative w-full h-full overflow-y-scroll overflow-x-hidden rounded-3xl box-border py-4 px-4"
-                style="flex: 1; border: 1px solid var(--neumorphic-color-invert);">
-                <form [formGroup]="formWebPageCreate" class="w-full flex flex-col xl:flex-row gap-4">
-                    <div class="flex flex-col gap-2 w-full">
-                        <span class="font-bold">Informações da página</span>
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <div class="col-span-1 md:col-span-4">
-                                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
-                                    <input matInput formControlName="title" placeholder="Informe o título da página"
-                                        value="">
-                                </mat-form-field>
-                            </div>
+                <div #ListWebpagesBody (onscroll)="reduceWhenStartScroll()"
+                    class="webpage-list relative w-full h-full overflow-y-scroll overflow-x-hidden rounded-2xl box-border py-4 px-4"
+                    style="flex: 1; border: 1px solid var(--neumorphic-color-invert);">
+                    <form [formGroup]="formWebPageCreate" class="w-full flex flex-col xl:flex-row gap-4">
+                        <div class="flex flex-col gap-2 w-full">
+                            <span class="font-bold text-[var(--neumorphic-color)]">
+                                Informações da página
+                            </span>
 
-                            <div class="col-span-1 md:col-span-4">
-                                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
-                                    <textarea class="min-h-[200px]" matInput formControlName="description"
-                                        placeholder="Descreva a página"></textarea>
-                                </mat-form-field>
-                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                <div class="col-span-1 md:col-span-4">
+                                    <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                                        <input matInput formControlName="title" placeholder="Informe o título da página"
+                                            value="">
+                                    </mat-form-field>
+                                </div>
 
-                            <div class="col-span-1 md:col-span-4">
-                                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
-                                    <textarea class="min-h-[200px]" matInput formControlName="content"
-                                        placeholder="Descreva o conteúdo da página (opcional) "></textarea>
-                                </mat-form-field>
+                                <div class="col-span-1 md:col-span-4">
+                                    <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                                        <textarea class="min-h-[200px]" matInput formControlName="description"
+                                            placeholder="Descreva a página"></textarea>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-span-1 md:col-span-4">
+                                    <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                                        <textarea class="min-h-[200px]" matInput formControlName="content"
+                                            placeholder="Descreva o conteúdo da página (opcional) "></textarea>
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <div class="flex flex-col gap-2 w-full">
-                        <span class="font-bold">
-                            Dados Adicionais
-                        </span>
+                        <div class="flex flex-col gap-2 w-full">
+                            <span class="font-bold text-[var(--neumorphic-color)]">
+                                Dados Adicionais
+                            </span>
 
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <div class="col-span-1 md:col-span-4 flex flex-col gap-4">
-                                <div class="relative w-full rounded-3xl bg-red-500 aspect-video"
-                                    style="border: 1px solid var(--neumorphic-color-invert)">
-                                    <div class="absolute top-4 right-4 bg-white rounded-full">
-                                        <button mat-icon-button matTooltip="Opções" [matMenuTriggerFor]="menu">
-                                            <span aria-hidden="true"
-                                                class="material-symbols-rounded text-[var(--neumorphic-color)]">
-                                                more_vert
-                                            </span>
-                                        </button>
-
-                                        <mat-menu #menu="matMenu">
-                                            <button mat-menu-item>
-                                                <span class="flex flex-row items-center gap-2">
-                                                    <span class="material-symbols-rounded">
-                                                        edit
-                                                    </span>
-                                                    <span>Editar</span>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                <div class="col-span-1 md:col-span-4 flex flex-col gap-4">
+                                    <div class="relative w-full rounded-3xl aspect-video"
+                                        style="border: 1px solid var(--neumorphic-color-invert)">
+                                        <div class="absolute top-4 right-4">
+                                            <div class="neumorphicButtonIcon small flat" matTooltip="Opções"
+                                                [matMenuTriggerFor]="menu">
+                                                <span class="icon" aria-hidden="true"
+                                                    class="material-symbols-rounded text-[var(--neumorphic-color)]">
+                                                    more_vert
                                                 </span>
-                                            </button>
+                                            </div>
 
-                                            <button mat-menu-item>
-                                                <span class="flex flex-row items-center gap-2">
-                                                    <span class="material-symbols-rounded">
-                                                        delete
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item>
+                                                    <span class="flex flex-row items-center gap-2">
+                                                        <span class="material-symbols-rounded">
+                                                            edit
+                                                        </span>
+                                                        <span>Editar</span>
                                                     </span>
-                                                    <span>Remover</span>
-                                                </span>
-                                            </button>
-                                        </mat-menu>
+                                                </button>
+
+                                                <button mat-menu-item>
+                                                    <span class="flex flex-row items-center gap-2">
+                                                        <span class="material-symbols-rounded">
+                                                            delete
+                                                        </span>
+                                                        <span>Remover</span>
+                                                    </span>
+                                                </button>
+                                            </mat-menu>
+                                        </div>
+                                    </div>
+                                    <div class="neumorphicButton full">
+                                        <span class="text">Adicionar Capa</span>
                                     </div>
                                 </div>
-                                <div class="neumorphicButton full">
-                                    <span class="text">Adicionar Capa</span>
+
+                                <div class="col-span-1 md:col-span-4">
+                                    <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
+                                        <input matInput formControlName="link" placeholder="Link Alternativo" value="">
+                                    </mat-form-field>
                                 </div>
                             </div>
-
-                            <div class="col-span-1 md:col-span-4">
-                                <mat-form-field appearance="outline" class="w-full neumorphicInput custom no_hint">
-                                    <input matInput formControlName="link" placeholder="Link Alternativo" value="">
-                                </mat-form-field>
-                            </div>
                         </div>
-                    </div>
-
-
-
-
-
-
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
-
-
 </div>

@@ -1,120 +1,135 @@
-<div class="relative w-full h-full box-border overflow-hidden" #viewBody>
+<div class="w-full h-full flex justify-center overflow-hidden">
+    <div class="relative w-full xl:w-[80dvw] h-full box-border overflow-hidden transition-all" #viewBody>
 
-    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="subMenuOverlay"
-        (detach)="subMenuOverlay = false">
-        <div class="subMenu" [ngClass]="{'show': subMenuOverlay}">
-            <ng-container *ngFor="let item of lstSubMenuItems">
-                <div class="menu-item" [routerLink]="item.url" (click)="subMenuOverlay = !subMenuOverlay">
-                    <span>{{item.label}}</span>
-                </div>
-            </ng-container>
+        <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="subMenuOverlay"
+            (detach)="subMenuOverlay = false">
+            <div class="subMenu" [ngClass]="{'show': subMenuOverlay}">
+                <ng-container *ngFor="let item of lstSubMenuItems">
+                    <div class="menu-item" [routerLink]="item.url" (click)="subMenuOverlay = !subMenuOverlay">
+                        <span>{{item.label}}</span>
+                    </div>
+                </ng-container>
 
-        </div>
+            </div>
 
-        <div class="fixed bg-red w-full h-full top-0 left-0" (click)="subMenuOverlay = !subMenuOverlay"></div>
-    </ng-template>
+            <div class="fixed bg-red w-full h-full top-0 left-0" (click)="subMenuOverlay = !subMenuOverlay"></div>
+        </ng-template>
 
-    <div class="w-full h-full flex flex-col overflow-hidden p-4 box-border">
+        <div class="w-full h-full flex flex-col overflow-hidden p-4 box-border">
 
 
-        <div #pageHeader class="welcome-header" [ngClass]="{'reduce': isScrolled}"
-            style="box-shadow: var(--main-shadow);">
-            <div class="flex flex-row gap-4 items-center">
-                <div cdkOverlayOrigin #trigger="cdkOverlayOrigin" class="neumorphicButton tiny"
-                    (click)="subMenuOverlay = !subMenuOverlay">
-                    <span class="material-symbols-rounded">
-                        dock_to_right
+            <div #pageHeader class="welcome-header" [ngClass]="{'reduce': isScrolled}"
+                style="box-shadow: var(--main-shadow);">
+                <div class="flex flex-row gap-4 items-center">
+                    <div cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+                        <ng-container *ngIf="!isMobile">
+                            <div class="neumorphicButton tiny" (click)="subMenuOverlay = !subMenuOverlay">
+                                <span class="material-symbols-rounded">
+                                    dock_to_right
+                                </span>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="isMobile">
+                            <div class="neumorphicButtonIcon flat" (click)="subMenuOverlay = !subMenuOverlay">
+                                <span class="material-symbols-rounded">
+                                    dock_to_right
+                                </span>
+                            </div>
+                        </ng-container>
+                    </div>
+
+
+                    <span class="font-bold text-[var(--neumorphic-color)]" style="font-size: 1.0rem;">
+                        Lista de páginas
                     </span>
                 </div>
-                <span class="font-bold text-[var(--neumorphic-color)]" style="font-size: 1.0rem;">
-                    Lista de páginas
-                </span>
-            </div>
-            <div class="flex flex-row gap-4">
-                <ng-container *ngIf="!isMobile">
-                    <div class="neumorphicButton tiny" routerLink="/pagebuilder/website/website-pages-create">
-                        <span class="text-[var(--neumorphic-color)]">Nova Página</span>
-                    </div>
-                </ng-container>
-
-                <ng-container *ngIf="isMobile">
-                    <div class="neumorphicButtonIcon flat">
-                        <span class="material-symbols-rounded">
-                            add
-                        </span>
-                    </div>
-                </ng-container>
-            </div>
-        </div>
-
-        <div #listWebpages
-            class="relative w-full h-full rounded-3xl flex flex-col items-center gap-4 p-3 md:p-6 box-border overflow-hidden"
-            style="box-shadow: var(--main-shadow);">
-
-            <div class="w-full h-[48px] flex flex-row justify-between" style="flex: 0" #listWebpagesHeader>
                 <div class="flex flex-row gap-4">
-                    <div class="neumorphicButton small">
-                        <div class="flex flex-row items-center text-[var(--neumorphic-color)]">
-                            <span>Todas Páginas</span>
-                            <span class="material-symbols-rounded">
-                                arrow_drop_down
-                            </span>
+                    <ng-container *ngIf="!isMobile">
+                        <div class="neumorphicButton bg-[var(--mat-sys-inverse-primary)] color-blend tiny" routerLink="/pagebuilder/webpages/webpages-create">
+                            <span class="text-[var(--neumorphic-color)]">Nova Página</span>
                         </div>
-                    </div>
-                </div>
-                <div class="flex flex-row gap-4">
+                    </ng-container>
 
-                </div>
-            </div>
-
-            <div #ListWebpagesBody (onscroll)="reduceWhenStartScroll()"
-                class="webpage-list relative w-full h-full overflow-y-scroll overflow-x-hidden rounded-3xl box-border py-4 px-4"
-                style="flex: 1; border: 1px solid var(--neumorphic-color-invert); max-height: calc(100% - (48px + 1rem));">
-                <div [@popUp]="lstWebpages.length"
-                    class="w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
-                    <ng-container *ngFor="let item of lstWebpages">
-                        <div class="w-full aspect-square rounded-3xl flex flex-col justify-between box-border cursor-pointer"
-                            style="box-shadow: var(--main-shadow);">
-
-                            <div class="flex flex-col w-full flex-1">
-                                <div class="thumb" style="background-image: url('{{item.thumbnail}}');"></div>
-                                <div class="px-4 pt-4 flex flex-col gap-2 text-[var(--neumorphic-color)] font-bold">
-                                    <span class="w-full flex justify-between items-center">
-                                        <span>Título</span>
-                                        <span>{{item.title}}</span>
-                                    </span>
-                                    <span class="w-full flex justify-between items-center gap-2">
-                                        <span>Link:</span>
-                                        <div class="line-clamp-1"><span>{{item.url}}</span></div>
-
-                                    </span>
-                                    <ng-container *ngIf="item.published">
-                                        <span class="w-full flex items-center justify-between">
-                                            <span>Status</span>
-                                            <span
-                                                class="rounded-2xl px-4 py-1 bg-green-200 bg-opacity-40 w-max box-border">
-                                                <span class="font-bold text-green-500">Publicado</span>
-                                            </span>
-                                        </span>
-                                    </ng-container>
-
-                                </div>
-                            </div>
-
-                            <div class="w-full flex flex-row gap-4 p-4 box-border">
-                                <div class="neumorphicButton small flat" style="flex: 1"><span
-                                        class="text">Editar</span></div>
-                                <div class="neumorphicButton small flat" style="flex: 1"><span
-                                        class="text">Visitar</span></div>
-                            </div>
-
+                    <ng-container *ngIf="isMobile">
+                        <div class="neumorphicButtonIcon bg-[var(--mat-sys-inverse-primary)] color-blend" routerLink="/pagebuilder/webpages/webpages-create">
+                            <span class="text-over-color flex items-center justify-center">
+                                <span class="material-symbols-rounded">
+                                    add
+                                </span>
+                            </span>
                         </div>
                     </ng-container>
                 </div>
             </div>
+
+            <div #listWebpages
+                class="relative w-full h-full rounded-3xl flex flex-col items-center gap-4 p-3 md:p-6 box-border overflow-hidden"
+                style="box-shadow: var(--main-shadow);">
+
+                <div class="w-full h-[48px] flex flex-row justify-between" style="flex: 0" #listWebpagesHeader>
+                    <div class="flex flex-row gap-4">
+                        <div class="neumorphicButton small">
+                            <div class="flex flex-row items-center text-[var(--neumorphic-color)]">
+                                <span>Todas Páginas</span>
+                                <span class="material-symbols-rounded">
+                                    arrow_drop_down
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row gap-4">
+
+                    </div>
+                </div>
+
+                <div #ListWebpagesBody (onscroll)="reduceWhenStartScroll()"
+                    class="webpage-list relative w-full h-full overflow-y-scroll overflow-x-hidden rounded-3xl box-border py-4 px-4"
+                    style="flex: 1; border: 1px solid var(--neumorphic-color-invert); max-height: calc(100% - (48px + 1rem));">
+                    <div [@popUp]="lstWebpages.length"
+                        class="w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
+                        <ng-container *ngFor="let item of lstWebpages">
+                            <div class="w-full aspect-square rounded-3xl flex flex-col justify-between box-border cursor-pointer"
+                                style="box-shadow: var(--main-shadow);">
+
+                                <div class="flex flex-col w-full flex-1">
+                                    <div class="thumb" style="background-image: url('{{item.thumbnail}}');"></div>
+                                    <div class="px-4 pt-4 flex flex-col gap-2 text-[var(--neumorphic-color)] font-bold">
+                                        <span class="w-full flex justify-between items-center">
+                                            <span>Título</span>
+                                            <span>{{item.title}}</span>
+                                        </span>
+                                        <span class="w-full flex justify-between items-center gap-2">
+                                            <span>Link:</span>
+                                            <div class="line-clamp-1"><span>{{item.url}}</span></div>
+
+                                        </span>
+                                        <ng-container *ngIf="item.published">
+                                            <span class="w-full flex items-center justify-between">
+                                                <span>Status</span>
+                                                <span class="font-bold text-green-500">Publicado</span>
+                                            </span>
+                                        </ng-container>
+
+                                    </div>
+                                </div>
+
+                                <div class="w-full flex flex-row gap-4 p-4 box-border">
+                                    <div class="neumorphicButton small flat" style="flex: 1"><span
+                                            class="text">Editar</span></div>
+                                    <div class="neumorphicButton small flat" style="flex: 1"><span
+                                            class="text">Visitar</span></div>
+                                </div>
+
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-    </div>
 
+    </div>
 
 </div>

@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-webpage-create',
@@ -19,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
         MatInputModule,
         MatButtonModule,
         MatMenuModule,
+        RouterLink
     ],
     templateUrl: './webpage-create.component.html',
     styleUrl: './webpage-create.component.scss',
